@@ -1,0 +1,35 @@
+﻿  main.cpp
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(144): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(145): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(152): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(157): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(163): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(168): warning C4244: =: преобразование "_Ty" в "int", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(201): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\TaskFifteen\main.cpp(207): warning C4018: <: несоответствие типов со знаком и без знака
+  TaskFifteen.vcxproj -> C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskFifteen\Debug\TaskFifteen.exe
