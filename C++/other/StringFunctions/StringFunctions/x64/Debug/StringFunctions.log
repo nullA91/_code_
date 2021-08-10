@@ -1,0 +1,8 @@
+﻿  _null_functions.cpp
+  functions.cpp
+C:\Projects\C++\cppstudio.com\hard\StringFunctions\StringFunctions\functions.cpp(45): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\cppstudio.com\hard\StringFunctions\StringFunctions\functions.cpp(104): warning C4305: =: усечение из "int" в "bool"
+  main.cpp
+C:\Projects\C++\cppstudio.com\hard\StringFunctions\StringFunctions\main.cpp(52): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "int", не может равняться данной константе
+  Создание кода...
+  StringFunctions.vcxproj -> C:\Projects\C++\cppstudio.com\hard\StringFunctions\x64\Debug\StringFunctions.exe
