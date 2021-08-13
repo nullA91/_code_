@@ -1,0 +1,56 @@
++-------------------------------------------------------------------------------+
+|1. | calculating the area and perimeter of a rectangle.                        |
++-------------------------------------------------------------------------------+
+length is 1 cm.	width is 1 cm.
+the perimeter of the rectangle is 4 cm.
+the area of the rectangle is 1 cm.
++-------------------------------------------------------------------------------+
+length is 1 cm.	width is 1 cm.
+the perimeter of the rectangle is 4 cm.
+the area of the rectangle is 1 cm.
++-------------------------------------------------------------------------------+
+|2. | calculating the area of a circle and the length of its circumference.     |
++-------------------------------------------------------------------------------+
+diameter is: 2 cm.
+the area of the circle is: 3.14 cm.
+the circumference is: 6.28 cm.
++-------------------------------------------------------------------------------+
+diameter is: 2 cm.
+the area of the circle is: 3.14 cm.
+the circumference is: 6.28 cm.
++-------------------------------------------------------------------------------+
+|3. | currency converter.                                                       |
++-------------------------------------------------------------------------------+
+entered amount: 3 UAH.
+for 3 UAH you will get: 1 $.
+for 3 UAH you will get: 1 euro.
++-------------------------------------------------------------------------------+
+|4. | calculating the number of seconds left until the new year.                |
++-------------------------------------------------------------------------------+
+|5. | separate output of integer and fractional parts of a number.              |
++-------------------------------------------------------------------------------+
+
+
+
+
+
+entered number: 5
+the integer part of number: 5
+real part of number: 0
++-------------------------------------------------------------------------------+
+
+entered number: 5
+the integer part of number: 5
+real part of number: 0
++-------------------------------------------------------------------------------+
+
+entered number: 5
+the integer part of number: 5
+real part of number: 0
++-------------------------------------------------------------------------------+
+
+entered number: 5
+the integer part of number: 5
+real part of number: 0
++-------------------------------------------------------------------------------+
+

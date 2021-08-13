@@ -1,0 +1,4 @@
+﻿  functions.cpp
+C:\Projects\C++\ItStep\HomeWork\2.TaskTwo\TaskTwo\TaskTwo\functions.cpp(17): warning C4244: =: преобразование "const double" в "int", возможна потеря данных
+C:\Projects\C++\ItStep\HomeWork\2.TaskTwo\TaskTwo\TaskTwo\functions.cpp(43): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  TaskTwo.vcxproj -> C:\Projects\C++\ItStep\HomeWork\2.TaskTwo\TaskTwo\x64\Debug\TaskTwo.exe

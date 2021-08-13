@@ -17,7 +17,8 @@ write a program that will ask you to enter the current month (the number of the 
 and display the number of seconds left until the new year (take into account only the month, excluding days and hours).
 to simplify calculations, we assume that there are 30 days in each month.
 For example: if the user entered November, then 2 months remain until the new year.
-The number of seconds in a month can be calculated using the formula: 30 (days) * 24 (hours in a day) * 60 (minutes in an hour) * 60 (seconds in a minute).
+The number of seconds in a month can be calculated using the formula:
+30 (days) * 24 (hours in a day) * 60 (minutes in an hour) * 60 (seconds in a minute).
 
 exercise 5
 the user enters a real number from the keyboard. the program discards all digits
