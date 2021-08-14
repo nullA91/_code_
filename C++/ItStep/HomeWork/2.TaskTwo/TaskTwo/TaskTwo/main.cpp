@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <cstdlib>
+#include <iomanip>
 #include "functions.h"
 
 const std::string _path_exercises = "C:\\Projects\\C++\\ItStep\\HomeWork\\2.TaskTwo\\recources\\exercises.txt";
@@ -10,6 +12,9 @@ int main(int _arguments_counter, char* _arguments_value[])
 	bool _empty_file = true;
 
 	const double PI = 3.14;
+	const int _amount_number = 10;
+
+	char converter[256]{ 0 };
 
 	int choise = 0;
 	std::string string = "";
@@ -58,6 +63,8 @@ int main(int _arguments_counter, char* _arguments_value[])
 		_file_calculation_results << "+-------------------------------------------------------------------------------+" << std::endl;
 		_file_calculation_results << "|5. | separate output of integer and fractional parts of a number.              |" << std::endl;
 		_file_calculation_results << "+-------------------------------------------------------------------------------+" << std::endl;
+		_file_calculation_results << "|6. | ########## end of file ##########                                         |" << std::endl;
+		_file_calculation_results << "+-------------------------------------------------------------------------------+" << std::endl;
 	
 		_file_calculation_results.close();
 	}
@@ -73,6 +80,7 @@ int main(int _arguments_counter, char* _arguments_value[])
 		std::cout << "|3. | currency converter.                                                       |" << std::endl;
 		std::cout << "|4. | calculating the number of seconds left until the new year.                |" << std::endl;
 		std::cout << "|5. | separate output of integer and fractional parts of a number.              |" << std::endl;
+		std::cout << "|6. | calculation output.                                                       |" << std::endl;
 		std::cout << "|0. | exit.                                                                     |" << std::endl;
 		std::cout << "+-------------------------------------------------------------------------------+" << std::endl;
 		std::cout << "select operation: ";
@@ -100,17 +108,17 @@ int main(int _arguments_counter, char* _arguments_value[])
 				square = length * width;
 				////////////
 				_string_data = "length is ";
-				_string_data += _converting_double_to_string(length);
+				_string_data += _gcvt(length, _amount_number, converter);
 			    _string_data += " cm.\twidth is ";
-			    _string_data += _converting_double_to_string(width);
+			    _string_data += _gcvt(width, _amount_number, converter);
 				_string_data += " cm.\n";
 				////////////
 				_string_data += "the perimeter of the rectangle is ";
-				_string_data += _converting_double_to_string(perimeter);
+				_string_data += _gcvt(perimeter, _amount_number, converter);
 				_string_data += " cm.\n";
 				///////////
 				_string_data += "the area of the rectangle is ";
-				_string_data += _converting_double_to_string(square);
+				_string_data += _gcvt(square, _amount_number, converter);
 				_string_data += " cm.\n";
 				
 				_writing_data_file(_file_calculation_results, _path_calculation_results, _string_data, choise);
@@ -133,15 +141,15 @@ int main(int _arguments_counter, char* _arguments_value[])
 				circumference = diameter * PI;
 				/////////////
 				_string_data = "diameter is: ";
-				_string_data += _converting_double_to_string(diameter);
+				_string_data += _gcvt(diameter, _amount_number, converter);
 				_string_data += " cm.\n";
 				////////////
 				_string_data += "the area of the circle is: ";
-				_string_data += _converting_double_to_string(area);
+				_string_data += _gcvt(area, _amount_number, converter);
 				_string_data += " cm.\n";
 				///////////
 				_string_data += "the circumference is: ";
-				_string_data += _converting_double_to_string(circumference);
+				_string_data += _gcvt(circumference, _amount_number, converter);
 				_string_data += " cm.\n";
 
 				_writing_data_file(_file_calculation_results, _path_calculation_results, _string_data, choise);
@@ -169,19 +177,19 @@ int main(int _arguments_counter, char* _arguments_value[])
 				_sum_euro = sum / _euro_selling_rate;
 				/////////////
 				_string_data = "entered amount: ";
-				_string_data += _converting_double_to_string(sum);
+				_string_data += _gcvt(sum, _amount_number, converter);
 				_string_data += " UAH.\n";
 				////////////
 				_string_data += "for ";
-				_string_data += _converting_double_to_string(sum);
+				_string_data += _gcvt(sum, _amount_number, converter);
 				_string_data += " UAH you will get: ";
-				_string_data += _converting_double_to_string(_sum_dollar);
+				_string_data += _gcvt(_sum_dollar, _amount_number, converter);
 				_string_data += " $.\n";
 				///////////
 				_string_data += "for ";
-				_string_data += _converting_double_to_string(sum);
+				_string_data += _gcvt(sum, _amount_number, converter);
 				_string_data += " UAH you will get: ";
-				_string_data += _converting_double_to_string(_sum_euro);
+				_string_data += _gcvt(_sum_euro, _amount_number, converter);
 				_string_data += " euro.\n";
 
 				_writing_data_file(_file_calculation_results, _path_calculation_results, _string_data, choise);
@@ -190,8 +198,6 @@ int main(int _arguments_counter, char* _arguments_value[])
 			}
 			case 4:
 			{
-				char converter[256]{ 0 };
-
 				const std::string months[12] = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
 
 				int month = 0;
@@ -223,8 +229,6 @@ int main(int _arguments_counter, char* _arguments_value[])
 			}
 			case 5:
 			{
-				char converter[256]{ 0 };
-
 				double number = 0.0;
 				int _whole_part = 0;
 				int _fractional_part = 0;
@@ -238,7 +242,7 @@ int main(int _arguments_counter, char* _arguments_value[])
 				_fractional_part = (number - static_cast<int>(number)) * 100;
 
 				_string_data = "entered number: ";
-				_string_data += _converting_double_to_string(number);
+				_string_data += _gcvt(number, _amount_number, converter);;
 				_string_data += "\n";
 				_string_data += "the integer part of number: ";
 				_itoa(_whole_part, converter, 10);
@@ -253,12 +257,18 @@ int main(int _arguments_counter, char* _arguments_value[])
 
 				break;
 			}
+			case 6:
+				system("cls");
+				_reading_data_file(_file_calculation_results, _path_calculation_results);
+				system("pause");
+				break;
 			case 0:
 				std::cout << "goodbye" << std::endl;
 				break;
 
 			default:
 				std::cout << "select the correct menu item" << std::endl;
+				system("pause");
 				break;
 		}
 
