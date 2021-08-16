@@ -1,0 +1,8 @@
+﻿  functions_shoot.cpp
+C:\Projects\C++\ItStep\Other\SeaBattle\SeaBattle\GLOBAL.h(7): warning C4309: static_cast: усечение константного значения
+  main.cpp
+C:\Projects\C++\ItStep\Other\SeaBattle\SeaBattle\GLOBAL.h(7): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\Other\SeaBattle\SeaBattle\main.cpp(7): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+C:\Projects\C++\ItStep\Other\SeaBattle\SeaBattle\functions_shoot.cpp(114): warning C4715: _function_shoot: значение возвращается не при всех путях выполнения
+  SeaBattle.vcxproj -> C:\Projects\C++\ItStep\Other\SeaBattle\Debug\SeaBattle.exe
