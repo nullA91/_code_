@@ -8,10 +8,10 @@ int main(int _arguments_counter, char* _arguments_value[])
 	SetConsoleOutputCP(1251);
 
 	/*
-	Задание 1. Пользователь вводит с клавиатуры время
-	в секундах, прошедшее с начала дня. Вывести на экран
-	текущее время в часах, минутах и секундах. Посчитать,
-	сколько часов, минут и секунд осталось до полуночи.
+	Р—Р°РґР°РЅРёРµ 1. РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРІРѕРґРёС‚ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ РІСЂРµРјСЏ
+	РІ СЃРµРєСѓРЅРґР°С…, РїСЂРѕС€РµРґС€РµРµ СЃ РЅР°С‡Р°Р»Р° РґРЅСЏ. Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ
+	С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ РІ С‡Р°СЃР°С…, РјРёРЅСѓС‚Р°С… Рё СЃРµРєСѓРЅРґР°С…. РџРѕСЃС‡РёС‚Р°С‚СЊ,
+	СЃРєРѕР»СЊРєРѕ С‡Р°СЃРѕРІ, РјРёРЅСѓС‚ Рё СЃРµРєСѓРЅРґ РѕСЃС‚Р°Р»РѕСЃСЊ РґРѕ РїРѕР»СѓРЅРѕС‡Рё.
 	*/
 
 	int temp = 0;
@@ -21,7 +21,7 @@ int main(int _arguments_counter, char* _arguments_value[])
 	int midnight = 0;
 
 TryAgain:
-	std::cout << "введите время в секундах(максимальное значение 86400): " << std::endl;
+	std::cout << "РІРІРµРґРёС‚Рµ РІСЂРµРјСЏ РІ СЃРµРєСѓРЅРґР°С…(РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ 86400): " << std::endl;
 	std::cin >> temp;
 
 	if (temp > 86400)
@@ -33,47 +33,47 @@ TryAgain:
 
 	if (temp > 60)
 	{
-		std::cout << "введенное время: ";
-		// часы
+		std::cout << "РІРІРµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ: ";
+		// С‡Р°СЃС‹
 		if (hours > 10 && hours < 20)
-			std::cout << hours << " часов; ";
+			std::cout << hours << " С‡Р°СЃРѕРІ; ";
 		else if (hours % 10 == 1)
-			std::cout << hours << " час; ";
+			std::cout << hours << " С‡Р°СЃ; ";
 		else if (hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4)
-			std::cout << hours << " часа; ";
+			std::cout << hours << " С‡Р°СЃР°; ";
 		else
-			std::cout << hours << " часов; ";
-		// минуты
+			std::cout << hours << " С‡Р°СЃРѕРІ; ";
+		// РјРёРЅСѓС‚С‹
 		if (minutes > 10 && minutes < 20)
-			std::cout << minutes << " минут; ";
+			std::cout << minutes << " РјРёРЅСѓС‚; ";
 		else if (minutes % 10 == 1)
-			std::cout << minutes << " минута; ";
+			std::cout << minutes << " РјРёРЅСѓС‚Р°; ";
 		else if (minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4)
-			std::cout << minutes << " минуты; ";
+			std::cout << minutes << " РјРёРЅСѓС‚С‹; ";
 		else
-			std::cout << minutes << " минут; ";
-		// секунды
+			std::cout << minutes << " РјРёРЅСѓС‚; ";
+		// СЃРµРєСѓРЅРґС‹
 		if (seconds > 10 && seconds < 20)
-			std::cout << seconds << " секунд." << std::endl;
+			std::cout << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 		else if (seconds % 10 == 1)
-			std::cout << seconds << " секунда." << std::endl;
+			std::cout << seconds << " СЃРµРєСѓРЅРґР°." << std::endl;
 		else if (seconds % 10 == 2 || seconds % 10 == 3 || seconds % 10 == 4)
-			std::cout << seconds << " секунды." << std::endl;
+			std::cout << seconds << " СЃРµРєСѓРЅРґС‹." << std::endl;
 		else
-			std::cout << seconds << " секунд." << std::endl;
+			std::cout << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 	}
 	else
 	{
-		std::cout << "введенное в ремя: " << 0 << " часов; " << 0 << " минут; ";
-		// секунды
+		std::cout << "РІРІРµРґРµРЅРЅРѕРµ РІ СЂРµРјСЏ: " << 0 << " С‡Р°СЃРѕРІ; " << 0 << " РјРёРЅСѓС‚; ";
+		// СЃРµРєСѓРЅРґС‹
 		if (temp > 10 && temp < 20)
-			std::cout << temp << " секунд." << std::endl;
+			std::cout << temp << " СЃРµРєСѓРЅРґ." << std::endl;
 		else if (temp % 10 == 1)
-			std::cout << temp << " секунда." << std::endl;
+			std::cout << temp << " СЃРµРєСѓРЅРґР°." << std::endl;
 		else if (temp % 10 == 2 || temp % 10 == 3 || temp % 10 == 4)
-			std::cout << temp << " секунды." << std::endl;
+			std::cout << temp << " СЃРµРєСѓРЅРґС‹." << std::endl;
 		else
-			std::cout << temp << " секунд." << std::endl;
+			std::cout << temp << " СЃРµРєСѓРЅРґ." << std::endl;
 	}
 
 	midnight = 24 * 60 * 60 - temp;
@@ -82,38 +82,38 @@ TryAgain:
 	minutes = (midnight - hours * 60 * 60) / 60;
 	seconds = midnight - (hours * 60 * 60 + minutes * 60);
 
-	std::cout << "до полуночи осталось: ";
-	// часы
+	std::cout << "РґРѕ РїРѕР»СѓРЅРѕС‡Рё РѕСЃС‚Р°Р»РѕСЃСЊ: ";
+	// С‡Р°СЃС‹
 	if (hours > 10 && hours < 20)
-		std::cout << hours << " часов; ";
+		std::cout << hours << " С‡Р°СЃРѕРІ; ";
 	else if (hours % 10 == 1)
-		std::cout << hours << " час; ";
+		std::cout << hours << " С‡Р°СЃ; ";
 	else if (hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4)
-		std::cout << hours << " часа; ";
+		std::cout << hours << " С‡Р°СЃР°; ";
 	else
-		std::cout << hours << " часов; ";
-	// минуты
+		std::cout << hours << " С‡Р°СЃРѕРІ; ";
+	// РјРёРЅСѓС‚С‹
 	if (minutes > 10 && minutes < 20)
-		std::cout << minutes << " минут; ";
+		std::cout << minutes << " РјРёРЅСѓС‚; ";
 	else if (minutes % 10 == 1)
-		std::cout << minutes << " минута; ";
+		std::cout << minutes << " РјРёРЅСѓС‚Р°; ";
 	else if (minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4)
-		std::cout << minutes << " минуты; ";
+		std::cout << minutes << " РјРёРЅСѓС‚С‹; ";
 	else
-		std::cout << minutes << " минут; ";
-	// секунды
+		std::cout << minutes << " РјРёРЅСѓС‚; ";
+	// СЃРµРєСѓРЅРґС‹
 	if (seconds > 10 && seconds < 20)
-		std::cout << seconds << " секунд." << std::endl;
+		std::cout << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 	else if (seconds % 10 == 1)
-		std::cout << seconds << " секунда." << std::endl;
+		std::cout << seconds << " СЃРµРєСѓРЅРґР°." << std::endl;
 	else if (seconds % 10 == 2 || seconds % 10 == 3 || seconds % 10 == 4)
-		std::cout << seconds << " секунды." << std::endl;
+		std::cout << seconds << " СЃРµРєСѓРЅРґС‹." << std::endl;
 	else
-		std::cout << seconds << " секунд." << std::endl;
+		std::cout << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 
 	/*
-	Задание 2. Пользователь вводит с клавиатуры диаметр
-	окружности. Посчитать площадь и периметр окружности.
+	Р—Р°РґР°РЅРёРµ 2. РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРІРѕРґРёС‚ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ РґРёР°РјРµС‚СЂ
+	РѕРєСЂСѓР¶РЅРѕСЃС‚Рё. РџРѕСЃС‡РёС‚Р°С‚СЊ РїР»РѕС‰Р°РґСЊ Рё РїРµСЂРёРјРµС‚СЂ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё.
 	*/
 	const float PI = 3.14;
 	
@@ -121,27 +121,27 @@ TryAgain:
 	float square = 0;
 	float diameter = 0;
 
-	std::cout << "введите диаметр окружности: ";
+	std::cout << "РІРІРµРґРёС‚Рµ РґРёР°РјРµС‚СЂ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё: ";
 	std::cin >> diameter;
 
 	square = std::pow(diameter, 2) / 4 * PI;
 	perimeter = PI * diameter;
 
-	std::cout << "площадь окружности: " << square << " см." << std::endl;
-	std::cout << "периметр окружности: " << perimeter << " см." << std::endl;
+	std::cout << "РїР»РѕС‰Р°РґСЊ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё: " << square << " СЃРј." << std::endl;
+	std::cout << "РїРµСЂРёРјРµС‚СЂ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё: " << perimeter << " СЃРј." << std::endl;
 
 	return 0;
 }
 /*
 if (temp > 60)
-	std::cout << "введенное в ремя: " << hours << " часов; " << minutes << " минут; " << seconds << " секунд." << std::endl;
+	std::cout << "РІРІРµРґРµРЅРЅРѕРµ РІ СЂРµРјСЏ: " << hours << " С‡Р°СЃРѕРІ; " << minutes << " РјРёРЅСѓС‚; " << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 else
-	std::cout << "введенное в ремя: " << 0 << " часов; " << 0 << " минут; " << temp << " секунд." << std::endl;
+	std::cout << "РІРІРµРґРµРЅРЅРѕРµ РІ СЂРµРјСЏ: " << 0 << " С‡Р°СЃРѕРІ; " << 0 << " РјРёРЅСѓС‚; " << temp << " СЃРµРєСѓРЅРґ." << std::endl;
 */
 ///////////////////////////////////////////////////////////////////////
 /*
 if (temp > 60)
-	std::cout << "до полуночи осталось: " << hours << " часов; " << minutes << " минут; " << seconds << " секунд." << std::endl;
+	std::cout << "РґРѕ РїРѕР»СѓРЅРѕС‡Рё РѕСЃС‚Р°Р»РѕСЃСЊ: " << hours << " С‡Р°СЃРѕРІ; " << minutes << " РјРёРЅСѓС‚; " << seconds << " СЃРµРєСѓРЅРґ." << std::endl;
 else
-	std::cout << "до полуночи осталось: " << 0 << " часов; " << 0 << " минут; " << midnight - temp << " секунд." << std::endl;
+	std::cout << "РґРѕ РїРѕР»СѓРЅРѕС‡Рё РѕСЃС‚Р°Р»РѕСЃСЊ: " << 0 << " С‡Р°СЃРѕРІ; " << 0 << " РјРёРЅСѓС‚; " << midnight - temp << " СЃРµРєСѓРЅРґ." << std::endl;
 */
