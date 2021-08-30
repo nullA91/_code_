@@ -6,30 +6,23 @@ int main(int _arguments_counter, char* _arguments_value[])
 {
 	srand(time(NULL));
 
-	bool flag = true;
+	char field_player[rows][columns];
+	char field_cpu[rows][columns];
 
-	char field[row][column];
-	char field_player[row][column];
-
-	_function_drawing_field(field);
 	_function_drawing_field(field_player);
+	_function_drawing_field(field_cpu);
 
-	_function_filling_field(field);
+	_function_filling_field(field_cpu);
 
-	
+	_function_output_filed(field_player);
+	_function_output_filed(field_cpu);
 
-	while (flag)
+	while (_function_shoot_player(field_cpu, field_player))
 	{
-		_function_output_filed(field_player, size);
-		_function_output_filed(field, size);
-		flag = _function_shoot(field, field_player);
 		system("cls");
-		//_function_output_filed(field_player, size);
+		_function_output_filed(field_player);
+		_function_output_filed(field_cpu);
 	}
-
-	system("cls");
-
-	_function_output_filed(field_player, size);
 
 	system("pause");
 
