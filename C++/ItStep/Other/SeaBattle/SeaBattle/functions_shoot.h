@@ -2,4 +2,4 @@
 
 #include "GLOBAL.h"
 
-int _function_shoot(char array_cpu[row][column], char array_player[row][column]);
+int _function_shoot_player(char _field_cpu[rows][columns], char _field_player[rows][columns]);
