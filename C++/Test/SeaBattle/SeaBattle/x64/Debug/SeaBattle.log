@@ -1,3 +1,0 @@
-﻿  ShootFunctions.cpp
-C:\Projects\C++\Test\SeaBattle\SeaBattle\ShootFunctions.cpp(8): warning C4309: static_cast: усечение константного значения
-  SeaBattle.vcxproj -> C:\Projects\C++\Test\SeaBattle\x64\Debug\SeaBattle.exe

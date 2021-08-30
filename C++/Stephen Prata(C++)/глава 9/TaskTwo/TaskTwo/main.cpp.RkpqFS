@@ -1,0 +1,15 @@
+#include <iostream>
+
+void strcount(std::string string);
+
+int main() {
+    std::string string = "";
+    std::cout << "Enter a line:" << std::endl;
+    std::cin >> string;
+    while(std::cin) {
+        strcount(string);
+        std::cout << "Enter next line (empty line to quit):" << std::endl;
+        std::cin >> string;
+    }
+    return 0;
+}
