@@ -1,52 +1,57 @@
 #include "functions_draw.h"
 
-void _function_drawing_field(char array[row][column])
+void _function_drawing_field(char field[rows][columns])
 {
-	for (int i = 0; i < row; /*++i*/)
+	for (int i = 0; i < rows; /*++i*/)
 	{
-		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < column; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
+		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < columns; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
 		{
-			array[i][a] = static_cast<char>(201);
-			array[i][b] = static_cast<char>(205);
-			array[i][c] = static_cast<char>(205);
-			array[i][d] = static_cast<char>(205);
-			array[i][e] = static_cast<char>(187);
+			field[i][a] = static_cast<char>(201);
+			field[i][b] = static_cast<char>(205);
+			field[i][c] = static_cast<char>(205);
+			field[i][d] = static_cast<char>(205);
+			field[i][e] = static_cast<char>(187);
 		}
 		++i;
-		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < column; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
+		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < columns; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
 		{
-			array[i][a] = static_cast<char>(186);
-			array[i][b] = ' ';
-			array[i][c] = ' ';
-			array[i][d] = ' ';
-			array[i][e] = static_cast<char>(186);
+			field[i][a] = static_cast<char>(186);
+			field[i][b] = ' ';
+			field[i][c] = ' ';
+			field[i][d] = ' ';
+			field[i][e] = static_cast<char>(186);
 		}
 		++i;
-		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < column; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
+		for (int a = 0, b = a + 1, c = b + 1, d = c + 1, e = d + 1; a < columns; a += 5, b = a + 1, c = b + 1, d = c + 1, e = d + 1)
 		{
-			array[i][a] = static_cast<char>(200);
-			array[i][b] = static_cast<char>(205);
-			array[i][c] = static_cast<char>(205);
-			array[i][d] = static_cast<char>(205);
-			array[i][e] = static_cast<char>(188);
+			field[i][a] = static_cast<char>(200);
+			field[i][b] = static_cast<char>(205);
+			field[i][c] = static_cast<char>(205);
+			field[i][d] = static_cast<char>(205);
+			field[i][e] = static_cast<char>(188);
 		}
 		++i;
 	}
 }
 
-void _function_filling_field(char array[row][column])
+void _function_filling_field(char field[rows][columns])
 {
 	for (int i = 0, j = 1; i < 10; ++i)
 	{
-		_function_drawing_ship(array, j, symbol/*j + 48*/);
+		_function_drawing_ship(field, j, symbol/*j + 48*/);
 		if (i == 3 || i == 6 || i == 8 || i == 9)
 			++j;
 	}
-	_function_dot_erasing(array);
+	_function_dot_erasing(field);
 }
 
-void _function_drawing_ship(char array[row][column], int _ship_size, char symbol)
+void _function_drawing_ship(char field[rows][columns], const int _ship_size, const char symbol)
 {
+	const int size = 10;
+
+	const int _indexes_rows[size] = { 1, 4, 7, 10, 13, 16, 19, 22, 25, 28 };
+	const int _indexes_columns[size] = { 2, 7, 12, 17, 22, 27, 32, 37, 42, 47 };
+
 	bool flag = false;
 
 	int counter = 0;
@@ -71,8 +76,8 @@ POINT:
 	Y = rand() % size;
 	X = rand() % size;
 
-	y = rows[Y];
-	x = columns[X];
+	y =_indexes_rows[Y];
+	x = _indexes_columns[X];
 
 DIRECTION:
 	RAND:
@@ -88,9 +93,9 @@ DIRECTION:
 		if (Y - _ship_size >= -1)
 		{
 			flag = true;
-			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += r_step, c += c_step)
+			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += _step_row, c += _step_column)
 			{
-				if (array[y - r][x] == 'o' || array[y - r][x] == symbol)
+				if (field[y - r][x] == 'o' || field[y - r][x] == symbol)
 				{
 					flag = false;
 					directions[direction - 1] = 0;
@@ -111,9 +116,9 @@ DIRECTION:
 		if (Y + _ship_size <= size)
 		{
 			flag = true;
-			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += r_step, c += c_step)
+			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += _step_row, c += _step_column)
 			{
-				if (array[y + r][x] == 'o' || array[y - r][x] == symbol)
+				if (field[y + r][x] == 'o' || field[y - r][x] == symbol)
 				{
 					counter++;
 					flag = false;
@@ -135,9 +140,9 @@ DIRECTION:
 		if (X - _ship_size >= -1)
 		{
 			flag = true;
-			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += r_step, c += c_step)
+			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += _step_row, c += _step_column)
 			{
-				if (array[y][x - c] == 'o' || array[y - r][x] == symbol)
+				if (field[y][x - c] == 'o' || field[y - r][x] == symbol)
 				{
 					counter++;
 					flag = false;
@@ -159,9 +164,9 @@ DIRECTION:
 		if (X + _ship_size <= size)
 		{
 			flag = true;
-			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += r_step, c += c_step)
+			for (int i = 0, r = 0, c = 0; i < _ship_size; ++i, r += _step_row, c += _step_column)
 			{
-				if (array[y][x + c] == 'o' || array[y - r][x] == symbol)
+				if (field[y][x + c] == 'o' || field[y - r][x] == symbol)
 				{
 					counter++;
 					flag = false;
@@ -186,86 +191,86 @@ DIRECTION:
 		{
 			if (direction == 1)
 			{
-				array[y][x] = symbol;
-				y -= r_step;
+				field[y][x] = symbol;
+				y -= _step_row;
 			}
 			else if (direction == 3)
 			{
-				array[y][x] = symbol;
-				y += r_step;
+				field[y][x] = symbol;
+				y += _step_row;
 			}
 			else if (direction == 2)
 			{
-				array[y][x] = symbol;
-				x -= c_step;
+				field[y][x] = symbol;
+				x -= _step_column;
 			}
 			else if (direction == 4)
 			{
-				array[y][x] = symbol;
-				x += c_step;
+				field[y][x] = symbol;
+				x += _step_column;
 			}
 		}
 	}
 	else goto POINT;
 
-	_function_dot_filling(array, symbol);
+	_function_dot_filling(field, symbol);
 }
 
-void _function_dot_filling(char array[row][column], const char symbol)
+void _function_dot_filling(char field[rows][columns], const char symbol)
 {
 
-	for (int i = 0; i < row; ++i)
+	for (int i = 0; i < rows; ++i)
 	{
-		for (int j = 0; j < column; ++j)
+		for (int j = 0; j < columns; ++j)
 		{
-			if (array[i][j] == symbol)
+			if (field[i][j] == symbol)
 			{
 				if (i == 1)
 				{
-					if(array[i + r_step][j] == ' ')
-						array[i + r_step][j] = 'o';
+					if(field[i + _step_row][j] == ' ')
+						field[i + _step_row][j] = 'o';
 				}
 				else if (i > 1 && i < 28)
 				{
-					if (array[i - r_step][j] == ' ')
-						array[i - r_step][j] = 'o';
-					if (array[i + r_step][j] == ' ')
-						array[i + r_step][j] = 'o';
+					if (field[i - _step_row][j] == ' ')
+						field[i - _step_row][j] = 'o';
+					if (field[i + _step_row][j] == ' ')
+						field[i + _step_row][j] = 'o';
 				}
 				else if(i == 28)
 				{
-					if (array[i - r_step][j] == ' ')
-						array[i - r_step][j] = 'o';
+					if (field[i - _step_row][j] == ' ')
+						field[i - _step_row][j] = 'o';
 				}
 
 				if (j == 2)
 				{
-						if(array[i][j + c_step] == ' ')
-						array[i][j + c_step] = 'o';
+						if(field[i][j + _step_column] == ' ')
+							field[i][j + _step_column] = 'o';
 				}
 				else if (j > 2 && j < 47)
 				{
-					if (array[i][j - c_step] == ' ')
-						array[i][j - c_step] = 'o';
-					if (array[i][j + c_step] == ' ')
-						array[i][j + c_step] = 'o';
+					if (field[i][j - _step_column] == ' ')
+						field[i][j - _step_column] = 'o';
+					if (field[i][j + _step_column] == ' ')
+						field[i][j + _step_column] = 'o';
 				}
 				else if(j == 47)
 				{
-					if (array[i][j - c_step] == ' ')
-						array[i][j - c_step] = 'o';
+					if (field[i][j - _step_column] == ' ')
+						field[i][j - _step_column] = 'o';
 				}
 			}
 		}
 	}
 }
 
-void _function_dot_erasing(char array[row][column])
+void _function_dot_erasing(char field[rows][columns])
 {
-	for (int i = 0; i < row; ++i)
+	for (int i = 0; i < rows; ++i)
 	{
-		for (int j = 0; j < column; ++j)
-			if (array[i][j] == 'o')
-				array[i][j] = ' ';
+		for (int j = 0; j < columns; ++j)
+			if (field[i][j] == 'o')
+				field[i][j] = ' ';
 	}
 }
