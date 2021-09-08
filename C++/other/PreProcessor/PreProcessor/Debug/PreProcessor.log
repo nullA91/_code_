@@ -1,0 +1,21 @@
+﻿  Functions.cpp
+C:\Projects\C++\other\PreProcessor\PreProcessor\Functions.cpp(137): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\other\PreProcessor\PreProcessor\Functions.cpp(141): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\other\PreProcessor\PreProcessor\Functions.cpp(145): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(33): warning C4477: "scanf_s": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "short *"
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(33): note: рекомендуется использовать "%hd" в строке форматирования
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(59): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(83): warning C4477: "scanf_s": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "short *"
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(83): note: рекомендуется использовать "%hd" в строке форматирования
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(94): error C2084: функция "int main(void)" уже имеет текст реализации
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(21): note: см. предыдущее определение "main"
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(141): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(141): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(141): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(141): note: этот аргумент используется в качестве размера буфера
+C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(142): warning C4473: "scanf_s": передано недостаточно аргументов для строки формата
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(142): note: заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(142): note: отсутствующий вариативный аргумент "2" требуется для строки форматирования "%c"
+  C:\Projects\C++\other\PreProcessor\PreProcessor\main.cpp(142): note: этот аргумент используется в качестве размера буфера
+  Создание кода...

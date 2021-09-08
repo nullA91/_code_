@@ -1,0 +1,8 @@
+﻿  functions.cpp
+C:\Projects\C++\ItStep\PracticeWork\19.TaskNineTeen\19.TaskNineTeen\functions.cpp(5): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\19.TaskNineTeen\19.TaskNineTeen\functions.cpp(9): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\19.TaskNineTeen\19.TaskNineTeen\functions.cpp(17): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\19.TaskNineTeen\19.TaskNineTeen\functions.cpp(49): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+  Создание кода...
+  19.TaskNineTeen.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\19.TaskNineTeen\Debug\19.TaskNineTeen.exe
