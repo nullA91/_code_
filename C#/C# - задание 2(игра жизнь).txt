@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace cSharpLife {
     class Program {
         static void Main(string[] args) {
-            Console.Title = "игра жизнь";
+            Console.Title = "РёРіСЂР° Р¶РёР·РЅСЊ";
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -20,7 +20,7 @@ namespace cSharpLife {
             Random random = new Random();
             char[,] lifeTable;
             lifeTable = new char[int.Parse(args[0]), int.Parse(args[1])];
-            Console.Write("введите начальное количество клеток для заселения: ");
+            Console.Write("РІРІРµРґРёС‚Рµ РЅР°С‡Р°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєР»РµС‚РѕРє РґР»СЏ Р·Р°СЃРµР»РµРЅРёСЏ: ");
             amount = int.Parse(Console.ReadLine());
             while (count <= amount) {
                 for (int i = 0; i < int.Parse(args[0]); i++) {
@@ -184,7 +184,7 @@ namespace cSharpLife {
                         }
                         break;
                 }
-                Console.WriteLine("\t\tигра жизнь");
+                Console.WriteLine("\t\tРёРіСЂР° Р¶РёР·РЅСЊ");
                 for (int i = 0; i < int.Parse(args[0]); i++) {
                     for (int k = 0; k < int.Parse(args[0]); k++)
                         Console.Write(" -");
@@ -196,8 +196,8 @@ namespace cSharpLife {
                 }
                 for (int k = 0; k < int.Parse(args[0]); k++)
                     Console.Write(" -");
-                Console.WriteLine("\nнажмите клавишу \"Tab\" для продолжения.");
-                Console.WriteLine("нажмите клавишу \"Esc\" для выхода.");
+                Console.WriteLine("\nРЅР°Р¶РјРёС‚Рµ РєР»Р°РІРёС€Сѓ \"Tab\" РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ.");
+                Console.WriteLine("РЅР°Р¶РјРёС‚Рµ РєР»Р°РІРёС€Сѓ \"Esc\" РґР»СЏ РІС‹С…РѕРґР°.");
                 Console.WriteLine();
                 key = Console.ReadKey();
             }
