@@ -18,4 +18,8 @@ const int _step_column = 5;
 
 void _function_output_filed(const char field[rows][columns]);
 void _function_console_cursor(int x, int y);
+<<<<<<< HEAD
 int length(int array[]);
+=======
+int length(int array[]);
+>>>>>>> 0d80803abda4533978ae41c6cf0c9b47261bce0f

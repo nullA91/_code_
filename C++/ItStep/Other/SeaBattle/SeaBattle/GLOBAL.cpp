@@ -67,4 +67,8 @@ void _function_console_cursor(int X, int Y)
 		console_number = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD cursor = { X, Y };
 	SetConsoleCursorPosition(console_number, cursor);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0d80803abda4533978ae41c6cf0c9b47261bce0f

@@ -5,8 +5,8 @@
 #include <cstring>
 #include <iostream>
 
-char* _convert_ANSI_string_to_ASCII_string(const char string[]); // функция конвертации ANSI строки в строку формата ASCII пренимающая константную строку
-char* _convert_ANSI_string_to_ASCII_string(char string[]); // функция конвертации ANSI строки в строку формата ASCII пренимающая неконстантную строку
+char* _convert_ANSI_string_to_ASCII_string(const char string[]); // С„СѓРЅРєС†РёСЏ РєРѕРЅРІРµСЂС‚Р°С†РёРё ANSI СЃС‚СЂРѕРєРё РІ СЃС‚СЂРѕРєСѓ С„РѕСЂРјР°С‚Р° ASCII РїСЂРµРЅРёРјР°СЋС‰Р°СЏ РєРѕРЅСЃС‚Р°РЅС‚РЅСѓСЋ СЃС‚СЂРѕРєСѓ
+char* _convert_ANSI_string_to_ASCII_string(char string[]); // С„СѓРЅРєС†РёСЏ РєРѕРЅРІРµСЂС‚Р°С†РёРё ANSI СЃС‚СЂРѕРєРё РІ СЃС‚СЂРѕРєСѓ С„РѕСЂРјР°С‚Р° ASCII РїСЂРµРЅРёРјР°СЋС‰Р°СЏ РЅРµРєРѕРЅСЃС‚Р°РЅС‚РЅСѓСЋ СЃС‚СЂРѕРєСѓ
 
 void _console_menu_creation_pyramid(const char* string, const size_t _max_length);
-void _console_menu_creation(const char* string, const size_t _max_length); // функция создания меню в консоли
+void _console_menu_creation(const char* string, const size_t _max_length); // С„СѓРЅРєС†РёСЏ СЃРѕР·РґР°РЅРёСЏ РјРµРЅСЋ РІ РєРѕРЅСЃРѕР»Рё
