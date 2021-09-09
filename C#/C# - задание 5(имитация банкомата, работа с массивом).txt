@@ -9,8 +9,8 @@ namespace cSharpHomeTask5 {
     class Program {
         static void Main(string[] args) {
             int choise = 1, number;
-            Console.Write("1. работа с массивом.\n2. работа с банкоматом.\n");
-            Console.Write("выберите номер операции: ");
+            Console.Write("1. СЂР°Р±РѕС‚Р° СЃ РјР°СЃСЃРёРІРѕРј.\n2. СЂР°Р±РѕС‚Р° СЃ Р±Р°РЅРєРѕРјР°С‚РѕРј.\n");
+            Console.Write("РІС‹Р±РµСЂРёС‚Рµ РЅРѕРјРµСЂ РѕРїРµСЂР°С†РёРё: ");
             number = int.Parse(Console.ReadLine());
             if (number == 1) {
                 RangeOfArray array1 = new RangeOfArray(6, 10);
@@ -19,27 +19,27 @@ namespace cSharpHomeTask5 {
                     array1[i] = i;
                 for (int i = -9; i < 15; i++)
                     array2[i] = i;
-                Console.Write("массив array1: |");
+                Console.Write("РјР°СЃСЃРёРІ array1: |");
                 for (int i = 6; i < 10; i++)
                     Console.Write(array1[i] + "|");
                 Console.WriteLine();
-                Console.Write("массив array2: |");
+                Console.Write("РјР°СЃСЃРёРІ array2: |");
                 for (int i = -9; i < 15; i++)
                     Console.Write(array2[i] + "|");
                 Console.WriteLine();
             }
             else if (number == 2) {
                 while (choise != 0) {
-                    Console.WriteLine("\t\"регистрация кредитной карты\"");
+                    Console.WriteLine("\t\"СЂРµРіРёСЃС‚СЂР°С†РёСЏ РєСЂРµРґРёС‚РЅРѕР№ РєР°СЂС‚С‹\"");
                     CreditCard client = new CreditCard();
                     client.openAccount();
-                    Console.WriteLine("\t\"данные кредитной карты\"");
-                    Console.WriteLine("номер карты: " + client.GetAccountCode);
-                    Console.WriteLine("пароль: " + client.GetPassword);
-                    Console.WriteLine("текущий баланс на карте: " + client.GetBalance);
-                    Console.WriteLine("\t\"меню\"");
-                    Console.Write("1. обслужить клиента.\n0. выход\n");
-                    Console.Write("выберите пункт меню: ");
+                    Console.WriteLine("\t\"РґР°РЅРЅС‹Рµ РєСЂРµРґРёС‚РЅРѕР№ РєР°СЂС‚С‹\"");
+                    Console.WriteLine("РЅРѕРјРµСЂ РєР°СЂС‚С‹: " + client.GetAccountCode);
+                    Console.WriteLine("РїР°СЂРѕР»СЊ: " + client.GetPassword);
+                    Console.WriteLine("С‚РµРєСѓС‰РёР№ Р±Р°Р»Р°РЅСЃ РЅР° РєР°СЂС‚Рµ: " + client.GetBalance);
+                    Console.WriteLine("\t\"РјРµРЅСЋ\"");
+                    Console.Write("1. РѕР±СЃР»СѓР¶РёС‚СЊ РєР»РёРµРЅС‚Р°.\n0. РІС‹С…РѕРґ\n");
+                    Console.Write("РІС‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ: ");
                     choise = int.Parse(Console.ReadLine());
                     if (choise == 1) {
                         ATM bank = new ATM(client.GetAccountCode, client.GetPassword, client.GetBalance);
@@ -47,7 +47,7 @@ namespace cSharpHomeTask5 {
                     }
                     else
                         break;
-                    Console.Write("воспользоваться банкоматом(1.да/0.нет)? ");
+                    Console.Write("РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ Р±Р°РЅРєРѕРјР°С‚РѕРј(1.РґР°/0.РЅРµС‚)? ");
                     choise = int.Parse(Console.ReadLine());
                 }
             }
@@ -75,7 +75,7 @@ namespace cSharpHomeTask5 {
         }
         public RangeOfArray(int low, int high) {
             if (high <= low)
-                Console.WriteLine("неверно введены индексы.)");
+                Console.WriteLine("РЅРµРІРµСЂРЅРѕ РІРІРµРґРµРЅС‹ РёРЅРґРµРєСЃС‹.)");
             else {
                 array = new int[high - low];
                 lowIndex = low;
@@ -118,7 +118,7 @@ namespace cSharpHomeTask5 {
 
         private bool PasswordVerification() {
             int temp;
-            Console.Write("введите пароль: ");
+            Console.Write("РІРІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ");
             temp = int.Parse(Console.ReadLine());
             if (temp == client.GetPassword)
                 return true;
@@ -133,16 +133,16 @@ namespace cSharpHomeTask5 {
                 flag = PasswordVerification();
                 if (flag) {
                     do {
-                        Console.WriteLine("\t\"меню\"");
-                        Console.WriteLine("1. вывод баланса на экран.");
-                        Console.WriteLine("2. пополнение счета.");
-                        Console.WriteLine("3. снять деньги со счета.");
-                        Console.WriteLine("0. выход.");
-                        Console.Write("выберите пункт меню: ");
+                        Console.WriteLine("\t\"РјРµРЅСЋ\"");
+                        Console.WriteLine("1. РІС‹РІРѕРґ Р±Р°Р»Р°РЅСЃР° РЅР° СЌРєСЂР°РЅ.");
+                        Console.WriteLine("2. РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°.");
+                        Console.WriteLine("3. СЃРЅСЏС‚СЊ РґРµРЅСЊРіРё СЃРѕ СЃС‡РµС‚Р°.");
+                        Console.WriteLine("0. РІС‹С…РѕРґ.");
+                        Console.Write("РІС‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ: ");
                         choise = int.Parse(Console.ReadLine());
                         switch (choise) {
                             case 1:
-                                Console.WriteLine("текущий баланс счета на карте: " + client.GetBalance);
+                                Console.WriteLine("С‚РµРєСѓС‰РёР№ Р±Р°Р»Р°РЅСЃ СЃС‡РµС‚Р° РЅР° РєР°СЂС‚Рµ: " + client.GetBalance);
                                 break;
                             case 2:
                                 client.AccountReplenishment();
@@ -155,22 +155,22 @@ namespace cSharpHomeTask5 {
                                 count = 0;
                                 break;
                             default:
-                                Console.WriteLine("под выбраным номером в меню нет операции, введите другое значение.");
+                                Console.WriteLine("РїРѕРґ РІС‹Р±СЂР°РЅС‹Рј РЅРѕРјРµСЂРѕРј РІ РјРµРЅСЋ РЅРµС‚ РѕРїРµСЂР°С†РёРё, РІРІРµРґРёС‚Рµ РґСЂСѓРіРѕРµ Р·РЅР°С‡РµРЅРёРµ.");
                                 break;
                         }
                         if (choise != 0) {
-                            Console.Write("повторить операцию(1.да/0.нет)? ");
+                            Console.Write("РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ(1.РґР°/0.РЅРµС‚)? ");
                             choise = int.Parse(Console.ReadLine());
                         }
                     } while (choise != 0);
                     break;
                 }
                 else {
-                    Console.WriteLine("неправильно введен пароль.");
+                    Console.WriteLine("РЅРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅ РїР°СЂРѕР»СЊ.");
                     count--;
                 }
             }
-            Console.WriteLine("приложение завершило работу.");
+            Console.WriteLine("РїСЂРёР»РѕР¶РµРЅРёРµ Р·Р°РІРµСЂС€РёР»Рѕ СЂР°Р±РѕС‚Сѓ.");
         }
     }
 }
@@ -208,7 +208,7 @@ namespace cSharpHomeTask5 {
                 password *= 10;
             }
             password /= 10;
-            Console.Write("введите сумму которую нужно положить на счет: ");
+            Console.Write("РІРІРµРґРёС‚Рµ СЃСѓРјРјСѓ РєРѕС‚РѕСЂСѓСЋ РЅСѓР¶РЅРѕ РїРѕР»РѕР¶РёС‚СЊ РЅР° СЃС‡РµС‚: ");
             balance = int.Parse(Console.ReadLine());
         }
 
@@ -223,16 +223,16 @@ namespace cSharpHomeTask5 {
         }
         public void AccountReplenishment() {
             int temp;
-            Console.Write("введите сумму для пополнения счета: ");
+            Console.Write("РІРІРµРґРёС‚Рµ СЃСѓРјРјСѓ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р°: ");
             temp = int.Parse(Console.ReadLine());
             balance += temp;
         }
         public void Withdrawals() {
             int temp;
-            Console.Write("введите сумму для снятия со счета: ");
+            Console.Write("РІРІРµРґРёС‚Рµ СЃСѓРјРјСѓ РґР»СЏ СЃРЅСЏС‚РёСЏ СЃРѕ СЃС‡РµС‚Р°: ");
             temp = int.Parse(Console.ReadLine());
             if ((balance - temp) < 0)
-                Console.WriteLine("Баланс на карте меньше запрашиваемой суммы для снятия. Проверьте текущее состояние счета.");
+                Console.WriteLine("Р‘Р°Р»Р°РЅСЃ РЅР° РєР°СЂС‚Рµ РјРµРЅСЊС€Рµ Р·Р°РїСЂР°С€РёРІР°РµРјРѕР№ СЃСѓРјРјС‹ РґР»СЏ СЃРЅСЏС‚РёСЏ. РџСЂРѕРІРµСЂСЊС‚Рµ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ СЃС‡РµС‚Р°.");
             else
                 balance -= temp;
        }
