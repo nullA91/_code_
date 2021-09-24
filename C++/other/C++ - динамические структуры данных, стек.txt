@@ -1,0 +1,184 @@
+1.Напишите программу, которая определит, правильно ли расставлены скобки в выражении, если оно состоит из скобок типа: ( ) [ ] { }. (использовать структуру данных стек)
+
+2.Пусть дана без ошибок формула, имеющая следующий синтаксис: 
+<формула>::=<цифра> | max(<формула>, < формула >) | min (<формула>,< формула >)
+<цифра>::=0  1  2  3  4  5  6  7  8   9
+Например, 8 или max(4, min(3, 5)) или  min(min(3, 5), max(2, max(3, 4))).
+Вычислить значение формулы, используя структуру данных стек.
+Stack.h
+
+#pragma once
+#include <cstdlib>
+#include <iostream>
+
+template<typename T>
+struct stack {
+	T* array = NULL;
+	unsigned int size = 0;
+};
+
+template<typename T>
+void _push_back(stack<T>* _stack, const T value);
+
+template<typename T>
+T _pop_back(stack<T>* _stack);
+
+template<typename T>
+void _push_back(stack<T>* _stack, const T value) {
+	T* _temp_array = (T*)malloc(_stack->size * sizeof(T));
+	for (size_t i = 0; i < _stack->size; i++)
+		_temp_array[i] = _stack->array[i];
+	_stack->size++;
+	free(_stack->array);
+	_stack->array = (T*)malloc(_stack->size * sizeof(T));
+	for (size_t i = 0; i < _stack->size - 1; i++)
+		_stack->array[i] = _temp_array[i];
+	_stack->array[_stack->size - 1] = value;
+	free(_temp_array);
+}
+
+template<typename T>
+T _pop_back(stack<T>* _stack) {
+	T _temp_value = 0;
+	T* _temp_array = NULL;
+	if (_stack->size) {
+		_temp_value = _stack->array[_stack->size - 1];
+		_stack->size--;
+		_temp_array = (T*)malloc(_stack->size * sizeof(T));
+		for (size_t i = 0; i < _stack->size; i++)
+			_temp_array[i] = _stack->array[i];
+		free(_stack->array);
+		_stack->array = (T*)malloc(_stack->size * sizeof(T));
+		for (size_t i = 0; i < _stack->size; i++)
+			_stack->array[i] = _temp_array[i];
+		free(_temp_array);
+	}
+	else
+		std::cout << "stack is empty, add at least one value to the stack." << std::endl;
+	return _temp_value;
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+CheckFunctions.h
+
+#pragma once
+#include "Stack.h"
+
+bool _check_opening_brackets(char symbol);
+
+bool _check_closing_brackets(char symbol);
+
+bool _check_expression(stack<char>* expression, const char* _check_expression);
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+CheckFunctions.cpp
+
+#include "CheckFunctions.h"
+#include <cstring>
+
+bool _check_opening_brackets(char symbol) {
+	if (symbol == '(' || symbol == '[' || symbol == '{')
+		return true;
+	return false;
+}
+
+bool _check_closing_brackets(char symbol) {
+	if (symbol == ')' || symbol == ']' || symbol == '}')
+		return true;
+	return false;
+}
+
+bool _check_expression(stack<char>* expression, const char* _check_expression) {
+	for (size_t i = 0; i < strlen(_check_expression); i++) {
+		if (_check_opening_brackets(_check_expression[i]))
+			_push_back(expression, _check_expression[i]);
+		else if (_check_closing_brackets(_check_expression[i])) {
+			if(_check_expression[i] == ')' && _check_expression[i] == expression->array[expression->size - 1] + 1)
+				_pop_back(expression);
+			else if (_check_expression[i] != ')' && _check_expression[i] == expression->array[expression->size - 1] + 2)
+				_pop_back(expression);
+			else
+				return false;
+		}
+	}
+	if (!expression->size)
+		return true;
+	return false;
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+ComputationalFunctions.h
+
+#pragma once
+#include <cstring>
+#include "Stack.h"
+
+template<typename T>
+T _formula_value(stack<char>* operations, stack<T>* numbers, char* formula);
+
+template<typename T>
+T _formula_value(stack<char>* operations, stack<T>* numbers, char* formula) {
+	const size_t _operation_size = 4;
+	T value;
+	T _number_one, _number_two;
+	char operation[4];
+	for (size_t i = 0; i < strlen(formula); i++) {
+		if (formula[i] >= 'a' && formula[i] <= 'z')
+			_push_back(operations, formula[i]);
+		else if (formula[i] >= '0' && formula[i] <= '9')
+			_push_back(numbers, static_cast<int>(formula[i]) - 48);
+	}
+	while (operations->size) {
+		for (int i = _operation_size - 2; i >= 0; i--)
+			operation[i] = _pop_back(operations);
+		operation[_operation_size - 1] = '\0';
+		if (!strcmp(operation, "max")) {
+			_number_one = _pop_back(numbers);
+			_number_two = _pop_back(numbers);
+			(_number_one > _number_two) ? _push_back(numbers, _number_one) : _push_back(numbers, _number_two);
+		}
+		else if (!strcmp(operation, "min")) {
+			_number_one = _pop_back(numbers);
+			_number_two = _pop_back(numbers);
+			(_number_one < _number_two) ? _push_back(numbers, _number_one) : _push_back(numbers, _number_two);
+		}
+	}
+	value = _pop_back(numbers);
+	return value;
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+main.cpp
+
+#include "CheckFunctions.h"
+#include "СomputationalFunctions.h"
+
+int main() {
+	setlocale(LC_ALL, "RUSSIAN");
+	stack<char> expression;
+	char* _correct_expression = "for(int i = 0 i < size; i++) { std::cout << array[i] << std::endl; }";
+	char* _wrong_expression = "for(int i = 0 i < size; i++) { std::cout << array {i] << std::endl; }";
+	if(_check_expression(&expression, _correct_expression))
+		std::cout << "expression: " << _correct_expression << '\n' << "brackets in the expression are placed correctly.\n" << std::endl;
+	else
+		std::cout << "expression: " << _correct_expression << '\n' << "brackets in the expression are placed incorrectly.\n" << std::endl;
+	if (_check_expression(&expression, _wrong_expression))
+		std::cout << "expression: " << _wrong_expression << '\n' << "brackets in the expression are placed correctly.\n" << std::endl;
+	else
+		std::cout << "expression: " << _wrong_expression << '\n' << "brackets in the expression are placed incorrectly.\n" << std::endl;
+
+	stack<char> operations;
+	stack<int> numbers;
+	char* formula = "max(4, min(3, 5))";
+	int value = _formula_value(&operations, &numbers, formula);
+	std::cout << "formula: " << formula << '\n' << "the value of the formula: |" << value << '|' << '\n' << std::endl;
+	formula = "min(min(3, 5), max(2, max(3, 4)))";
+	value = _formula_value(&operations, &numbers, formula);
+	std::cout << "formula: " << formula << '\n' << "the value of the formula: |" << value << '|' << '\n' << std::endl;
+	system("pause");
+	return 0;
+}
