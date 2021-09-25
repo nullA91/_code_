@@ -11,14 +11,14 @@ void create_menu(const char* string)
 
 	if (!strcmp(string, "menu"))
 	{
-		// верх пункта меню
+		// РІРµСЂС… РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(201);
 		for(size_t i = 0; i < length; ++i)
 		{
 			std::cout << static_cast<char>(205);
 		}
 		std::cout << static_cast<char>(187) << "\n\n";
-		// середина пункта меню
+		// СЃРµСЂРµРґРёРЅР° РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(186);
 		for (size_t i = 0; i < length / two; ++i)
 		{
@@ -30,7 +30,7 @@ void create_menu(const char* string)
 			std::cout << ' ';
 		}
 		std::cout << static_cast<char>(186) << "\n\n";
-		// низ пункта меню
+		// РЅРёР· РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(200);
 		for (size_t i = 0; i < length; ++i)
 		{
@@ -40,21 +40,21 @@ void create_menu(const char* string)
 	}
 	else
 	{
-		// верх пункта меню
+		// РІРµСЂС… РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(201);
 		for (size_t i = 0; i < length; ++i)
 		{
 			std::cout << static_cast<char>(205);
 		}
 		std::cout << static_cast<char>(187) << "\n\n";
-		// середина пункта меню
+		// СЃРµСЂРµРґРёРЅР° РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(186) << counter << '.' << string;
 		for (size_t i = 0; i < (length - strlen(string) - two); ++i)
 		{
 			std::cout << ' ';
 		}
 		std::cout << static_cast<char>(186) << "\n\n";
-		// низ пункта меню
+		// РЅРёР· РїСѓРЅРєС‚Р° РјРµРЅСЋ
 		std::cout << static_cast<char>(200);
 		for (size_t i = 0; i < length; ++i)
 		{
@@ -68,51 +68,3 @@ void create_menu(const char* string)
 			counter = 1;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-template<typename data_type>
-std::pair<data_type, data_type> sum_and_prodocts_array_elements(const data_type* array, const size_t size)
-{
-	std::pair<data_type, data_type> return_value;
-
-	return_value.first = 0;
-	return_value.second = 1;
-
-	for (size_t i = 0; i < size; ++i)
-	{
-		return_value.first += array[i];
-		return_value.second *= array[i];
-	}
-
-	return return_value;
-}
-*/
