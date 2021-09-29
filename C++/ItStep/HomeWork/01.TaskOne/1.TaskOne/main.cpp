@@ -169,5 +169,3 @@ RETRY:
 
 	return 0;
 }
-
-// "C:\\Projects\\C++\\ItStep\\HomeWork\\1.TaskOne\\files\\test.txt"; // путь к файлу
