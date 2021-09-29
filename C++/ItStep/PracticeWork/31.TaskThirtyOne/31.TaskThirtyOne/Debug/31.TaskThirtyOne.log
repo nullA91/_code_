@@ -1,0 +1,47 @@
+﻿  functions.cpp
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(71): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(99): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(118): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(120): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(121): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(123): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(125): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(126): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(128): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(130): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(131): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(132): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(134): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(136): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(140): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(144): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(145): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(147): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(149): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(153): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(157): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(158): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(160): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(162): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(166): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(170): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(171): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(173): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(175): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(179): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(183): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(184): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(186): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(188): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(192): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(196): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(197): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(199): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(201): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(203): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\functions.cpp(204): warning C4309: static_cast: усечение константного значения
+  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\main.cpp(81): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\31.TaskThirtyOne\main.cpp(94): warning C4018: >: несоответствие типов со знаком и без знака
+  Создание кода...
+  31.TaskThirtyOne.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\31.TaskThirtyOne\Debug\31.TaskThirtyOne.exe

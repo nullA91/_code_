@@ -1,0 +1,44 @@
++-------------------------------------------------------------------------------+
+|1. | calculating the area and perimeter of a rectangle.                        |
++-------------------------------------------------------------------------------+
+length is 12.2 cm.	width is 5. cm.
+the perimeter of the rectangle is 34.4 cm.
+the area of the rectangle is 61. cm.
++-------------------------------------------------------------------------------+
+length is 12.3 cm.	width is 23. cm.
+the perimeter of the rectangle is 70.6 cm.
+the area of the rectangle is 282.9 cm.
++-------------------------------------------------------------------------------+
+|2. | calculating the area of a circle and the length of its circumference.     |
++-------------------------------------------------------------------------------+
+diameter is: 46. cm.
+the area of the circle is: 1661.06 cm.
+the circumference is: 144.44 cm.
++-------------------------------------------------------------------------------+
+|3. | currency converter.                                                       |
++-------------------------------------------------------------------------------+
+entered amount: 3247. UAH.
+for 3247. UAH you will get: 118.9377289 $.
+for 3247. UAH you will get: 100.8385093 euro.
++-------------------------------------------------------------------------------+
+|4. | calculating the number of seconds left until the new year.                |
++-------------------------------------------------------------------------------+
+starting from may 20736000 seconds left until the new year
++-------------------------------------------------------------------------------+
+starting from august 12960000 seconds left until the new year
++-------------------------------------------------------------------------------+
+|5. | separate output of integer and fractional parts of a number.              |
++-------------------------------------------------------------------------------+
+entered number: 4556.343462
+the integer part of number: 4556
+real part of number: 34
++-------------------------------------------------------------------------------+
+|6. | ########## end of file ##########                                         |
++-------------------------------------------------------------------------------+
+
+
+
+
+
+
+

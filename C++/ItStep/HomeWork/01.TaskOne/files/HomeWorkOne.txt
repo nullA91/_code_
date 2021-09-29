@@ -1,0 +1,18 @@
+Exercise 1
+Using display statements,
+display brief information about yourself.
+
+Exercise 2
+Using escape sequences,
+display a stanza from a poem
+as shown in the example below.
+
+Jeus, Estrella, Esperanza, Mercy:
+
+	Sails flashing to the wind like weapons,
+	sharks following the moans the fever and the dying;
+	horror the corposant and compass rose.
+
+Middle Passage:
+	voyage througth death
+		to life upon these shores.
