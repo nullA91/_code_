@@ -31,9 +31,9 @@ int main(int arg_c, char* arg_v[])
 
 	char surname[size] = "";
 
-	std::cout << _convert_ANSI_string_to_ASCII_string("ââåäèòå êîëè÷åñòâî ñòðîê â ìàññèâå: ");
+	std::cout << _convert_ANSI_string_to_ASCII_string("введите количество строк в массиве: ");
 	std::cin >> rows;
-	std::cout << _convert_ANSI_string_to_ASCII_string("ââåäèòå êîëè÷åñòâî ñòîëáöîâ â ìàññèâå: ");
+	std::cout << _convert_ANSI_string_to_ASCII_string("введите количество столбцов в массиве: ");
 	std::cin >> columns;
 
 	pointer_array = new int[columns];
@@ -106,7 +106,7 @@ char* surname_length()
 
 	for (size_t i = 0; i < rows; ++i)
 	{
-		std::cout << _convert_ANSI_string_to_ASCII_string("ââåäèòå ") << i + 1 << _convert_ANSI_string_to_ASCII_string(" -óþ ôàìèëèþ ñòóäåíòà: ");
+		std::cout << _convert_ANSI_string_to_ASCII_string("введите ") << i + 1 << _convert_ANSI_string_to_ASCII_string(" -ую фамилию студента: ");
 		std::cin.ignore();
 		std::cin.getline(surnames[i], (columns - 1));
 		if (strlen(surnames[i]) > strlen(surname))
