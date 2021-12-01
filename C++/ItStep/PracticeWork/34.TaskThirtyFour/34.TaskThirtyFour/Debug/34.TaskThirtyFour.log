@@ -1,0 +1,11 @@
+﻿  main.cpp
+  structures.cpp
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(207): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(217): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(233): warning C4018: <=: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(243): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(330): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(351): warning C4309: static_cast: усечение константного значения
+C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\34.TaskThirtyFour\structures.cpp(371): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  34.TaskThirtyFour.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\34.TaskThirtyFour\Debug\34.TaskThirtyFour.exe
