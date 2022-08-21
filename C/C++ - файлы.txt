@@ -1,0 +1,450 @@
+/*
+// - - - - - - - - - - //
+// Дан код программы на С++.  Вывести  все операции и частоту их использования в программе.
+// - - - - - - - - - - //
+
+#include <iostream>
+#include <Windows.h>
+
+bool letters(char);
+bool numbers(char);
+bool other_symbols(char);
+void file_operations(FILE*);
+void count_operations();
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	FILE *source;
+	int number1, number2;
+	std::cout << "введите первое число: ";
+	std::cin >> number1;
+	std::cout << "введите второе число: ";
+	std::cin >> number2;
+	std::cout << "сумма чисел: " << number1 + number2 << std::endl;
+	std::cout << "разность чисел: " << number1 - number2 << std::endl;
+	std::cout << "произведение чисел: " << number1 * number2 << std::endl;
+	std::cout << "частное чисел: " << number1 / number2 << std::endl;
+
+	fopen_s(&source, "main.cpp", "r");
+	if(source == NULL) {
+		std::cout << "ошибка в файле." << std::endl;
+		return 0;
+	} 
+	file_operations(source);
+	count_operations();
+	fclose(source);
+	system("pause");
+	return 0;
+}
+
+void file_operations(FILE *file) {
+	FILE *operations = NULL;
+	fopen_s(&operations, "операции.txt", "w");
+	if(operations == NULL) {
+		printf_s("ошибка в файле.\n");
+		return;
+	}
+	int index = 0;
+	char symbol;
+	while((symbol = fgetc(file)) != EOF) {
+		if(letters(symbol) && numbers(symbol) && other_symbols(symbol))
+			fputc(symbol, operations);
+		else if(symbol == ' ')
+			fputc(' ', operations);
+	}
+	fclose(operations);
+}
+void count_operations() {
+	int set_count = 0, mod_set_count = 0, mul_set_count = 0, div_set_count = 0, add_set_count = 0, sub_set_count = 0;
+	int mod_count = 0, mul_count = 0, div_count = 0, add_count = 0, sub_count = 0;
+	int eq_count = 0, uneq_count = 0, greater_than_eq = 0, less_than_eq = 0, greater_than = 0, less_than = 0;
+	int input_count = 0, out_count = 0;
+	int and_count = 0, or_count = 0, ternary_count = 0;
+	char string[1024];
+	FILE *file = NULL;
+	fopen_s(&file, "операции.txt", "r");
+	if(file == NULL) {
+		printf_s("ошибка в файле.\n");
+		return;
+	}
+	fgets(string, 1024, file);
+	for(int i = 0; i < strlen(string); i++) {
+		if(string[i] == '=' &&(string[i - 1] != '%' && string[i - 1] != '*' && string[i - 1] != '/' && string[i - 1] != '+' && string[i - 1] != '-' && string[i - 1] != '<' && string[i - 1] != '>' && string[i - 1] != '!' && string[i - 1] != '=') && string[i + 1] != '=') set_count++;
+		else if(string[i] == '%' && string[i + 1] != '=') mod_count++;
+		else if(string[i] == '%' && string[i + 1] == '=') mod_set_count++;
+		else if(string[i] == '*' && string[i + 1] != '=') mul_count++;
+		else if(string[i] == '*' && string[i + 1] == '=') mul_set_count++;
+		else if(string[i] == '/' && string[i + 1] != '=') div_count++;
+		else if(string[i] == '/' && string[i + 1] == '=') div_set_count++;
+		else if(string[i] == '+' && string[i + 1] != '=' && string[i + 1] != '+' && string[i - 1] != '+') add_count++;
+		else if(string[i] == '+' && string[i + 1] == '=') add_set_count++;
+		else if(string[i] == '-' && string[i + 1] != '=' && string[i + 1] != '-' && string[i - 1] != '-') sub_count++;
+		else if(string[i] == '-' && string[i + 1] == '=') sub_set_count++;
+		else if(string[i] == '<' && (string[i + 1] != '<' && string[i + 1] != '=') && string[i - 1] != '<') less_than++;
+		else if(string[i] == '>' && (string[i + 1] != '>' && string[i + 1] != '=') && string[i - 1] != '>') greater_than++;
+		else if(string[i] == '<' && string[i + 1] == '=') less_than_eq++;
+		else if(string[i] == '>' && string[i + 1] == '=') greater_than_eq++;
+		else if(string[i] == '!' && string[i + 1] == '=') uneq_count++;
+		else if(string[i] == '=' && string[i + 1] == '=') eq_count++;
+		else if(string[i] == '<' && string[i + 1] == '<') out_count++;
+		else if(string[i] == '>' && string[i + 1] == '>') input_count++;
+		else if(string[i] == '&' && string[i + 1] == '&') and_count++;
+		else if(string[i] == '|' && string[i + 1] == '|') or_count++;
+		else if(string[i] == '?' && string[i + 1] == ':') ternary_count++;
+	}
+	printf_s("\nоперация %% встречается %i раз(а)", mod_count);
+	printf_s("\nоперация * встречается %i раз(а)", mul_count);
+	printf_s("\nоперация / встречается %i раз(а)", div_count);
+	printf_s("\nоперация + встречается %i раз(а)", add_count);
+	printf_s("\nоперация - встречается %i раз(а)", sub_count);
+	printf_s("\nоперация = встречается %i раз(а)", set_count);
+	printf_s("\nоперация %%= встречается %i раз(а)", mod_set_count);
+	printf_s("\nоперация *= встречается %i раз(а)", mul_set_count);
+	printf_s("\nоперация /= встречается %i раз(а)", div_set_count);
+	printf_s("\nоперация += встречается %i раз(а)", add_set_count);
+	printf_s("\nоперация -= встречается %i раз(а)", sub_set_count);
+	printf_s("\n");
+	printf_s("\nоперация < встречается %i раз(а)", less_than);
+	printf_s("\nоперация > встречается %i раз(а)", greater_than);
+	printf_s("\nоперация <= встречается %i раз(а)", less_than_eq);
+	printf_s("\nоперация >= встречается %i раз(а)", greater_than_eq);
+	printf_s("\nоперация != встречается %i раз(а)", uneq_count);
+	printf_s("\nоперация == встречается %i раз(а)", eq_count);
+	printf_s("\n");
+	printf_s("\nоперация << встречается %i раз(а)", out_count);
+	printf_s("\nоперация >> встречается %i раз(а)", input_count);
+	printf_s("\n");
+	printf_s("\nоперация && встречается %i раз(а)", and_count);
+	printf_s("\nоперация || встречается %i раз(а)", or_count);
+	printf_s("\nоперация ?: встречается %i раз(а)", ternary_count);
+	printf_s("\n");
+
+	fclose(file);
+}
+bool other_symbols(char symbol) {
+	if(symbol == ' ' || symbol == '\t' || symbol == '\n' || symbol == '.' || symbol == ',' || symbol == ';' || symbol == ':' || symbol == '[' || symbol == ']'
+		|| symbol == '\'' || symbol == '\"' || symbol == '_' || symbol == '{' || symbol == '}' || symbol == '\\' || symbol == '(' || symbol == ')' || symbol == '#') return false;
+	else return true;
+}
+bool numbers(char symbol) {
+	if(symbol >= '0' && symbol <= '9') return false;
+	else return true;
+}
+bool letters(char symbol) {
+	if(symbol >= 'A' && symbol <= 'Z') return false;
+	else if(symbol >= 'a' && symbol <= 'z') return false;
+	if(symbol >= 'А' && symbol <= 'Я') return false;
+	else if(symbol >= 'а' && symbol <= 'я') return false;
+	else return true;
+}
+*/
+
+/*
+// - - - - - - - - - - //
+// Дан текстовый файл. Отсортировать все слова в файле по длине слова и вывести в файл  Output.txt..
+// - - - - - - - - - - //
+
+#include <iostream>
+#include <Windows.h>
+
+bool symbols(char);
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	FILE *file1 = NULL, *file2 = NULL;
+	int index = 0;
+	const int rows = 10, columns = 128;
+	char array[rows][columns];
+	char string[columns];
+	char symbol;
+	char file_name1[] = "words.txt", file_name2[] = "Output.txt";
+	fopen_s(&file1, file_name1, "r");
+	fopen_s(&file2, file_name2, "w");
+	if(file1 == NULL || file2 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		return 0;
+	}
+	while((symbol = fgetc(file1)) != EOF) {
+		if(symbols(symbol))
+			fputc(symbol, file2);
+		else
+			fputc('\n', file2);
+	}
+	fclose(file1);
+	fclose(file2);
+	fopen_s(&file2, file_name2, "r");
+	while(!feof(file2))
+		fgets(array[index++], 128, file2);
+	fclose(file2);
+	for(int i = 0; i < rows; i++) {
+		for(int j = i; j < rows; j++) {
+			if(strlen(array[i]) > strlen(array[j])) {
+                strcpy_s(string,array[i]);
+                strcpy_s(array[i],array[j]);
+                strcpy_s(array[j],string);
+            }
+        }
+    }
+	fopen_s(&file2, file_name2, "w");
+	for(int i = 0; i < rows; i++)
+		fputs(array[i], file2);
+	fclose(file2);
+	system("pause");
+	return 0;
+}
+
+bool symbols(char symbol) {
+	if((symbol >= 'a' && symbol <= 'z') || (symbol >= 'A' && symbol <= 'Z'))
+		return true;
+	else if((symbol >= 'а' && symbol <= 'я') || (symbol >= 'А' && symbol <= 'Я'))
+		return true;
+	else
+		return false;
+}
+*/
+
+/*
+// - - - - - - - - - - //
+// Задан текстовый файл, содержащий информацию о студентах в следующем виде :
+// ФИО пробел ГРУППА пробел НОМЕР ЗАЧЕТКИ пробел Оценка   пробел Оценка   пробел Оценка 
+// Например  
+// Иванов 4  456345   5 3 4.   
+// Петров  4  456348   4 3 4.
+// Иванова  5 456340   5 3 5
+// Петрова  5 456349   4 5 4
+// Составить программу получения:
+// среднего балла каждого студента
+// общего среднего балла
+// общего списка, состоящего из фамилии, номера группы, номера зачетки, среднего балла.
+// списка отличников, состоящего из фамилии, номера группы, номера зачетки 
+// списка имеющих неудовлетворительные  оценки, состоящего из фамилии, номера группы, номера зачетки
+// Для проверки результатов информацию созданных списков вывести на экран.
+// Все  полученные списки записать  в текстовые файлы OutAll.txt, OutО.txt  и OutN.txt, упорядочив списки по группам, каждую группу по фамилиям  в алфавитном порядке (используя  свою  и стандартную процедуры сортировки)  и вывести на экран. 
+// Общий средний балл записать первой строкой в файл OutAll.txt.
+// - - - - - - - - - - //
+
+#include <iostream>
+#include <Windows.h>
+
+int average_score(char*);
+int overall_average_score(FILE*);
+void general_list(FILE*, FILE*);
+void honor_roll_file(FILE*, FILE*);
+void list_unsatisfactory(FILE*, FILE*);
+void gs_sort(FILE*);
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	char string[256];
+	FILE *file1 = NULL, *file2 = NULL, *file3 = NULL, *file4 = NULL, *file5 = NULL;
+	
+	honor_roll_file(file1, file3);
+	fopen_s(&file3, "honor roll.txt", "r");
+	if(file3 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return 0;
+	}
+	printf_s("\t\t\t\tсписок отличников\n\n");
+	while(!feof(file3)) {
+		fgets(string, 255, file3);
+		printf_s("%s", string);
+	}
+	fclose(file3);
+	printf_s("\n");
+
+	list_unsatisfactory(file1, file4);
+	fopen_s(&file4, "list unsatisfactory.txt", "r");
+	if(file4 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return 0;
+	}
+	printf_s("\t\t\tсписок учеников с неудовлетворительными оценками\n\n");
+	while(!feof(file4)) {
+		fgets(string, 255, file4);
+		printf_s("%s", string);
+	}
+	fclose(file4);
+	printf_s("\n\n");
+
+	general_list(file1, file2);
+	gs_sort(file2);
+	printf_s("\t\t\t\tсписок всех учеников\n\n");
+	fopen_s(&file2, "general list.txt", "r");
+	if(file2 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return 0;
+	}
+	while(!feof(file2)) {
+		fgets(string, 255, file2);
+		printf_s("%s", string);
+	}
+	fclose(file2);
+	printf_s("\n");
+	system("pause");
+	return 0;
+}
+
+int average_score(char *string) {
+	bool flag = true;
+	int count = 0, number = 0, av_sc = 0;
+	for(int i = strlen(string) - 1; flag == true; i--) {
+		if(string[i] >= '0' && string[i] <= '9' && string[i - 1] == ' ' && !(string[i + 1] >= '0' && string[i + 1] <= '9')) {
+			count++;
+			number = (string[i] - 48);
+			av_sc += number;
+		}
+		else if((string[i] >= '0' && string[i] <= '9') && (string[i - 1] >= '0' && string[i - 1] <= '9')) {
+			count++;
+			number = 10; 
+			number += (string[i] - 48);
+			av_sc += number;
+		}
+		if(string[i] == ' ' && string[i - 1] == ' ')
+			flag = false;
+	}
+	if(count != 0)
+		av_sc /= count;
+	return av_sc;
+}
+int overall_average_score(FILE *file) {
+	char string[256];
+	int count = 0, ov_av_sc = 0;
+	fopen_s(&file, "students.txt", "r");
+	if(file == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return 0;
+	}
+	fgets(string, 255, file);
+	while (!feof(file)) {
+		fgets(string, 255, file);	
+		ov_av_sc += average_score(string);
+		count++;
+	}
+	if(count != 0)
+		ov_av_sc /= count;
+	return ov_av_sc;
+}
+void general_list(FILE *file1, FILE *file2) {
+	char string1[256], string2[] = "    СРЕДНИЙ БАЛЛ";
+	fopen_s(&file1, "students.txt", "r");
+	fopen_s(&file2, "general list.txt", "w");
+	if(file1 == NULL || file2 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return;
+	}
+	fgets(string1, 255, file1);
+	for(int i = 0; i < strlen(string1) - 1; i++)
+		fputc(string1[i], file2);
+	for(int i = 0; i < strlen(string2); i++)
+		fputc(string2[i], file2);
+	fputc('\n', file2);
+	while (!feof(file1)) {
+		fgets(string1, 255, file1);	
+		for(int i = 0; i < strlen(string1) - 1; i++)
+			fputc(string1[i], file2);
+		fputc('\t', file2);
+		fputc(average_score(string1) + 48, file2);
+		fputc('\n', file2);
+	}
+	fputs("общий средний бал учеников: ", file2);
+	fputc(overall_average_score(file1) + 48, file2);
+	fclose(file1);
+	fclose(file2);
+}
+void honor_roll_file(FILE *file1, FILE *file2) {
+	char string[256];
+	fopen_s(&file1, "students.txt", "r");
+	fopen_s(&file2, "honor roll.txt", "w");
+	if(file1 == NULL || file2 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return;
+	}
+	fgets(string, 255, file1);
+	fputs(string, file2);
+	while(!feof(file1)) {
+		fgets(string, 255, file1);
+		if(average_score(string) >= 6)
+			fputs(string,file2);
+	}
+	fclose(file1);
+	fclose(file2);
+}
+void list_unsatisfactory(FILE *file1, FILE *file2) {
+	char string[256];
+	fopen_s(&file1, "students.txt", "r");
+	fopen_s(&file2, "list unsatisfactory.txt", "w");
+	if(file1 == NULL || file2 == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return;
+	}
+	fgets(string, 255, file1);
+	fputs(string, file2);
+	while(!feof(file1)) {
+		fgets(string, 255, file1);
+		if(average_score(string) < 6)
+			fputs(string,file2);
+	}
+	fclose(file1);
+	fclose(file2);
+}
+void gs_sort(FILE *file) {
+	int index1 = 0, index2 = 0;
+	char string[256];
+	char students[8][256];
+	fopen_s(&file, "general list.txt", "r");
+	if(file == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return;
+	}
+	fgets(string, 255, file);
+	for(int i = 0; i < strlen(string); i++)
+		if(string[i] == 'Г')
+			index1 = i;
+	strcpy_s(students[index2], string);
+	index2 += 1;
+	while(!feof(file)) {
+		fgets(string, 255, file);
+		strcpy_s(students[index2], string);
+		index2 += 1;
+	}
+	fclose(file);
+	for(int i = 1; i < 7; i++) {
+		for(int j = i; j < 7; j++) {
+			if(students[i][index1] > students[j][index1]) {
+				strcpy_s(string,students[i]);
+				strcpy_s(students[i],students[j]);
+                strcpy_s(students[j],string);
+            }
+        }
+    }
+	for(int i = 0; i < 7; i++) {
+		for(int j = i; j < 7; j++) {
+			if(students[i][0] > students[j][0] && students[i][index1] == students[j][index1]) {
+				strcpy_s(string,students[i]);
+				strcpy_s(students[i],students[j]);
+                strcpy_s(students[j],string);
+            }
+        }
+    }
+	fopen_s(&file, "general list.txt", "w");
+	if(file == NULL) {
+		printf_s("невозможно открыть файл.\n"); 
+		system("pause");
+		return;
+	}
+	for(int i = 0; i < 8; i++)
+		fputs(students[i], file);
+	fclose(file);
+}
+*/

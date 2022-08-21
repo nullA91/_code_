@@ -1,0 +1,21 @@
+7 - large number
+3 - smaller number
+---------------------
+7 - large number
+1 - smaller number
+---------------------
+the numbers are equal
+---------------------
+9 - large number
+6 - smaller number
+---------------------
+the numbers are equal
+---------------------
+the numbers are equal
+---------------------
+the numbers are equal
+---------------------
+the numbers are equal
+---------------------
+the numbers are equal
+---------------------

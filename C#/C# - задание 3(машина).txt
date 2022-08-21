@@ -1,0 +1,247 @@
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask3 {
+    class Program {
+        static void Main(string[] args) {
+            Car[] cars = new Car[5];
+            int choise;
+            int number;
+            do {
+                Console.WriteLine("\t\"меню\"\n1. добавить машины для тест - драйва.\n2. тест - драйв автомобиля.\n3. вывести список автомобилей.");
+                Console.Write("выберите пункт меню: ");
+                choise = int.Parse(Console.ReadLine());
+                switch (choise) {
+                    case 1:
+                        for (int i = 0; i < 5; i++) {
+                            cars[i] = new Car();
+                            cars[i].input();
+                        }
+                        break;
+                    case 2:
+                        Console.Write("введите порядковый номер автомобиля(от 1 до 5): ");
+                        number = int.Parse(Console.ReadLine());
+                        do {
+                            if (number > 0 && number < 6) {
+                                Console.WriteLine("\t\"меню\"\n1. увеличить скорость автомобиля.\n2. уменьшить скорость автомобиля.\n3. узнать текущую скорость.\n4. остановить машину(закончить тест - драйв).");
+                                Console.Write("выберите пункт меню: ");
+                                choise = int.Parse(Console.ReadLine());
+                                switch (choise) {
+                                    case 1:
+                                        cars[number - 1].speedUp();
+                                        break;
+                                    case 2:
+                                        cars[number - 1].speedDown();
+                                        break;
+                                    case 3:
+                                        Console.WriteLine("текущая скоросить автомобиля: " + cars[number - 1].getSpeed() + "км/ч.");
+                                        break;
+                                    case 4:
+                                        cars[number - 1].stop();
+                                        break;
+                                    default:
+                                        Console.WriteLine("под выбраным номером в меню нет пункта, введите другое значение.");
+                                        break;
+                                }
+                            }
+                            else {
+                                Console.WriteLine("для тест - драйва доступно только пять машин, введите значение от (1 до 5).");
+                                Console.Write("введите порядковый номер автомобиля(от 1 до 5): ");
+                                number = int.Parse(Console.ReadLine());
+                            }
+                            Console.Write("\nповторить операцию(1.да/2.нет)? ");
+                            choise = int.Parse(Console.ReadLine());
+                        } while (choise != 2);
+                        break;
+                    case 3:
+                        for (int i = 0; i < 5; i++)
+                            cars[i].output();
+                        break;
+                    default:
+                        Console.WriteLine("под выбраным номером в меню нет пункта, введите другое значение.");
+                        break;
+                }
+                Console.Write("\nповторить операцию(1.да/2.нет)? ");
+                choise = int.Parse(Console.ReadLine());
+            } while (choise != 2);
+            Console.WriteLine("количество автомобилей принявших участие в тест - драйве: " + Car.getAmount());
+        }
+    }
+}
+
+Car.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask3 {
+    class Car {
+        static private int amount = 0;
+        private string brand;
+        private string type;
+        private int speed;
+        private int maxSpeed;
+        private Driver driver = new Driver();
+
+        static Car() {
+            amount = 0;
+        }
+
+        public Car() {
+            brand = "undefined";
+            type = "undefined";
+            speed = 0;
+            maxSpeed = 0;
+            driver = new Driver();
+            amount++;
+        }
+        public Car(string brand, string type, int speed, int maxSpeed,ref Driver driver) {
+            this.brand = brand;
+            this.type = type;
+            this.speed = speed;
+            this.maxSpeed = maxSpeed;
+            this.driver = new Driver();
+            amount++;
+        }
+
+        static public int getAmount() {
+            return amount;
+        }
+
+        public void input() {
+            Console.Write("\nвведите марку автомобиля: ");
+            brand = Console.ReadLine();
+            Console.WriteLine("\tменю:\n1. легковой автомобиль\n2. грузовой автомобиль\n3. мотоцикл");
+            int choise;
+            bool flag = true;
+            while (flag == true) {
+                Console.Write("выберите тип автомобиля: ");
+                choise = int.Parse(Console.ReadLine());
+                if (choise == 1) {
+                    type = "легковой автомобиль";
+                    maxSpeed = 250;
+                    flag = false;
+                }
+                else if (choise == 2) {
+                    type = "грузовой автомобиль";
+                    maxSpeed = 150;
+                    flag = false;
+                }
+                else if (choise == 3) {
+                    type = "мотоцикл";
+                    maxSpeed = 200;
+                    flag = false;
+                }
+                else
+                    Console.WriteLine("под выбраным номером в меню нет пункта, введите другое значение.");
+            }
+            Console.WriteLine("\n\tвведите данные водителя:");
+            driver.input();
+        }
+        public void output() {
+            for (int i = 0; i < 25; i++)
+                Console.Write(" -");
+            Console.WriteLine();
+            Console.WriteLine("| \t\"характеристики автомобиля\" {0, 15}", "|");
+            Console.WriteLine("| марка автомобиля: {0, 31}", brand + "|");
+            Console.WriteLine("| тип автомобиля: {0, 33}", type + "|");
+            Console.WriteLine("| максимальная скорость автомобиля: {0, 15}", maxSpeed + "км/ч|");
+            for (int i = 0; i < 25; i++)
+                Console.Write(" -");
+            Console.WriteLine();
+            driver.output();
+        }
+        public int getSpeed() {
+            return speed;
+        }
+        public void speedUp() {
+            if (speed < maxSpeed)
+                speed += 50;
+            if (speed >= maxSpeed)
+                Console.WriteLine("достигнута максимальная скорость, понизьте скорось.");
+        }
+        public void speedDown() {
+            if (speed > 50) {
+                speed -= 50;
+            }
+            if(speed <= 50)
+                Console.WriteLine("достигнута минимальная скорость, повысьте скорось.");
+        }
+        public void stop() {
+            speed = 0;
+        }
+    }
+}
+
+Driver.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask3 {
+    class Driver {
+        static private int amount;
+        private string name;
+        private string surname;
+        private string birthday;
+        private int age;
+        private int experience;
+
+        static Driver() {
+            amount = 0;
+        }
+
+        public Driver() {
+            name = "undefined";
+            surname = "undefined";
+            birthday = "undefined";
+            age = 0;
+            experience = 0;
+        }
+        public Driver(string name, string surname, string birthday, int age, int experience) {
+            this.name = name;
+            this.surname = surname;
+            this.birthday = birthday;
+            this.age = age;
+            this.experience = experience;
+        }
+
+        static public int getAmount() {
+            return amount;
+        }
+
+        public void input() {
+            Console.Write("введите имя водителя: ");
+            name = Console.ReadLine();
+            Console.Write("введите фамилию водителя: ");
+            surname = Console.ReadLine();
+            Console.Write("введите дату рождения водителя(день/месяц/год): ");
+            birthday = Console.ReadLine();
+            Console.Write("введите количество полных лет водителя: ");
+            age = int.Parse(Console.ReadLine());
+            Console.Write("введите стаж вождения водителя: ");
+            experience = int.Parse(Console.ReadLine());
+        }
+        public void output() {
+            for (int i = 0; i < 25; i++)
+                Console.Write(" -");
+            Console.WriteLine("\n|\t\"информация о водителе\" {0, 19}", "|");
+            Console.WriteLine("| имя водителя: {0, 35}", name + "|");
+            Console.WriteLine("| фамилия водителя: {0, 31}", surname + "|");
+            Console.WriteLine("| дата рождения водителя: {0, 25}", birthday + "|");
+            Console.WriteLine("| возраст водителя: {0, 31}", age + "|");
+            Console.WriteLine("| стаж вождения водителя: {0, 25}", experience + "|");
+            for (int i = 0; i < 25; i++)
+                Console.Write(" -");
+            Console.WriteLine("\n");
+        }
+    }
+}

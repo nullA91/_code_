@@ -1,0 +1,28 @@
+exercise 1
+write a program to calculate the area and perimeter of a rectangle.
+the side lengths of the rectangle are entered by the user from the keyboard.
+
+exercise 2
+write a program that will ask the user to enter the diameter of a circle
+and display the result of calculating the area of a circle and the length
+of its circumference on the screen.
+
+exercise 3
+write a program that will ask the user to enter an amount in hryvnia and
+display the corresponding amount in dollars and euros.
+P.S. try to make the result output only 2 digits after the decimal point.
+
+exercise 4
+write a program that will ask you to enter the current month (the number of the month as a number)
+and display the number of seconds left until the new year (take into account only the month, excluding days and hours).
+to simplify calculations, we assume that there are 30 days in each month.
+For example: if the user entered November, then 2 months remain until the new year.
+The number of seconds in a month can be calculated using the formula:
+30 (days) * 24 (hours in a day) * 60 (minutes in an hour) * 60 (seconds in a minute).
+
+exercise 5
+the user enters a real number from the keyboard. the program discards all digits
+after the second digit after the decimal point and displays separately the integer
+part of the number and separately the fractional part. for example,
+suppose the user entered the number 23.435342, then the program displays the
+integer part (23) and the fractional part (43), which consists of two digits.

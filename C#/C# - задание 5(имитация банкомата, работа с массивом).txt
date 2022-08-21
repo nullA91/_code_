@@ -1,0 +1,240 @@
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask5 {
+    class Program {
+        static void Main(string[] args) {
+            int choise = 1, number;
+            Console.Write("1. работа с массивом.\n2. работа с банкоматом.\n");
+            Console.Write("выберите номер операции: ");
+            number = int.Parse(Console.ReadLine());
+            if (number == 1) {
+                RangeOfArray array1 = new RangeOfArray(6, 10);
+                RangeOfArray array2 = new RangeOfArray(-9, 15);
+                for (int i = 6; i < 10; i++)
+                    array1[i] = i;
+                for (int i = -9; i < 15; i++)
+                    array2[i] = i;
+                Console.Write("массив array1: |");
+                for (int i = 6; i < 10; i++)
+                    Console.Write(array1[i] + "|");
+                Console.WriteLine();
+                Console.Write("массив array2: |");
+                for (int i = -9; i < 15; i++)
+                    Console.Write(array2[i] + "|");
+                Console.WriteLine();
+            }
+            else if (number == 2) {
+                while (choise != 0) {
+                    Console.WriteLine("\t\"регистрация кредитной карты\"");
+                    CreditCard client = new CreditCard();
+                    client.openAccount();
+                    Console.WriteLine("\t\"данные кредитной карты\"");
+                    Console.WriteLine("номер карты: " + client.GetAccountCode);
+                    Console.WriteLine("пароль: " + client.GetPassword);
+                    Console.WriteLine("текущий баланс на карте: " + client.GetBalance);
+                    Console.WriteLine("\t\"меню\"");
+                    Console.Write("1. обслужить клиента.\n0. выход\n");
+                    Console.Write("выберите пункт меню: ");
+                    choise = int.Parse(Console.ReadLine());
+                    if (choise == 1) {
+                        ATM bank = new ATM(client.GetAccountCode, client.GetPassword, client.GetBalance);
+                        bank.service();
+                    }
+                    else
+                        break;
+                    Console.Write("воспользоваться банкоматом(1.да/0.нет)? ");
+                    choise = int.Parse(Console.ReadLine());
+                }
+            }
+        }
+    }
+}
+
+RangeOfArray.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask5 {
+    class RangeOfArray {
+        private int[] array;
+        private int lowIndex;
+        private int highIndex;
+
+        public RangeOfArray() {
+            lowIndex = 0;
+            highIndex = 1;
+            array = new int[highIndex - lowIndex];
+        }
+        public RangeOfArray(int low, int high) {
+            if (high <= low)
+                Console.WriteLine("неверно введены индексы.)");
+            else {
+                array = new int[high - low];
+                lowIndex = low;
+                highIndex = --high;
+            }
+        }
+
+        public int this[int index] { 
+            get {
+                if (index >= lowIndex && index <= highIndex)
+                    return array[index - lowIndex];
+                else
+                    return 0;
+            }
+            set {
+                if (index >= lowIndex && index <= highIndex)
+                    array[index - lowIndex] = value;
+            }
+        }
+    }
+}
+
+ATM.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask5 {
+    public class ATM {
+        private CreditCard client;
+
+        public ATM() {
+            client = new CreditCard();
+        }
+        public ATM(string accountCode, int password, int sum) {
+            client = new CreditCard(accountCode, password, sum);
+        }
+
+        private bool PasswordVerification() {
+            int temp;
+            Console.Write("введите пароль: ");
+            temp = int.Parse(Console.ReadLine());
+            if (temp == client.GetPassword)
+                return true;
+            else
+                return false;
+        }
+        public void service() {
+            int count = 3;
+            int choise;
+            bool flag;
+            while (count > 0) {
+                flag = PasswordVerification();
+                if (flag) {
+                    do {
+                        Console.WriteLine("\t\"меню\"");
+                        Console.WriteLine("1. вывод баланса на экран.");
+                        Console.WriteLine("2. пополнение счета.");
+                        Console.WriteLine("3. снять деньги со счета.");
+                        Console.WriteLine("0. выход.");
+                        Console.Write("выберите пункт меню: ");
+                        choise = int.Parse(Console.ReadLine());
+                        switch (choise) {
+                            case 1:
+                                Console.WriteLine("текущий баланс счета на карте: " + client.GetBalance);
+                                break;
+                            case 2:
+                                client.AccountReplenishment();
+                                break;
+                            case 3:
+                                client.Withdrawals();
+                                break;
+                            case 0:
+                                flag = false;
+                                count = 0;
+                                break;
+                            default:
+                                Console.WriteLine("под выбраным номером в меню нет операции, введите другое значение.");
+                                break;
+                        }
+                        if (choise != 0) {
+                            Console.Write("повторить операцию(1.да/0.нет)? ");
+                            choise = int.Parse(Console.ReadLine());
+                        }
+                    } while (choise != 0);
+                    break;
+                }
+                else {
+                    Console.WriteLine("неправильно введен пароль.");
+                    count--;
+                }
+            }
+            Console.WriteLine("приложение завершило работу.");
+        }
+    }
+}
+
+CreditCard.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask5 {
+    public class CreditCard {
+        private string accountCode;
+        private int password;
+        private int balance;
+
+        public CreditCard() {
+            accountCode = "";
+            password = 0;
+            balance = 0;
+        }
+        public CreditCard(string accountCode, int password, int balance) {
+            this.accountCode = accountCode;
+            this.password = password;
+            this.balance = balance;
+        }
+
+        public void openAccount() {
+            Random random = new Random();
+            for (int i = 0; i < 8; i++)
+                accountCode += random.Next(0, 9).ToString();
+            for (int i = 0; i < 6; i++) {
+                password += random.Next(0, 10);
+                password *= 10;
+            }
+            password /= 10;
+            Console.Write("введите сумму которую нужно положить на счет: ");
+            balance = int.Parse(Console.ReadLine());
+        }
+
+        public string GetAccountCode {
+            get { return accountCode; }
+        }
+        public int GetPassword {
+            get { return password; }
+        }
+        public int GetBalance {
+            get { return balance; }
+        }
+        public void AccountReplenishment() {
+            int temp;
+            Console.Write("введите сумму для пополнения счета: ");
+            temp = int.Parse(Console.ReadLine());
+            balance += temp;
+        }
+        public void Withdrawals() {
+            int temp;
+            Console.Write("введите сумму для снятия со счета: ");
+            temp = int.Parse(Console.ReadLine());
+            if ((balance - temp) < 0)
+                Console.WriteLine("Баланс на карте меньше запрашиваемой суммы для снятия. Проверьте текущее состояние счета.");
+            else
+                balance -= temp;
+       }
+    }
+}

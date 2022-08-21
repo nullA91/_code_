@@ -1,0 +1,17 @@
+﻿  main.cpp
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(17): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(19): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(20): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(22): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(23): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(28): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(30): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(32): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(34): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(35): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(36): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(37): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(39): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(41): warning C4309: static_cast: усечение константного значения
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\TaskThree\main.cpp(42): warning C4309: static_cast: усечение константного значения
+  TaskThree.vcxproj -> C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThree\Debug\TaskThree.exe

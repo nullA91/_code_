@@ -1,0 +1,219 @@
+﻿
+Структура.
+
+1. Создать структуру данных студент с полями:
+
+ФИО 
+ 
+ГРУППА 
+ 
+НОМЕР ЗАЧЕТКИ 
+
+Массив оценок
+
+В массиве структур имеется следующая информация о студентах:
+
+Иванов 4  456345   5 3 10
+
+Петров  4  456348   4 8 4
+
+Иванова  5 456340   5 3 5
+
+Петрова  5 456349   4 5 4
+
+Составить программу получения:
+
+среднего балла каждого студента
+
+общего среднего балла
+
+общего списка, состоящего из 
+фамилии, 
+номера группы, 
+номера зачетки, 
+среднего балла.
+
+списка отличников, 
+состоящего из 
+фамилии, 
+номера группы, 
+номера зачетки 
+
+списка имеющих неудовлетворительные  оценки, состоящего из 
+фамилии, 
+номера группы, 
+номера зачетки
+
+Для проверки результатов информацию созданных списков вывести на экран.
+
+main.cpp
+#include <iostream>
+#include "Functions.h"
+#include <Windows.h>
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Student *students;
+	int amount, choise;
+	char symbol;
+	std::cout << "введите количество студентов: ";
+	std::cin >> amount;
+	students = new Student[amount];
+	for(int i = 0; i < amount; i++)
+		stud_input(students[i]);
+	do {
+		system("cls");
+		std::cout << "\t\tменю" << std::endl;
+		std::cout << "1. вывод списка студентов.\n";
+		std::cout << "2. вывод среднего бала студента.\n";
+		std::cout << "3. вывод общего среднего балла всех студентов.\n";
+		std::cout << "4. вывод списка отличников.\n";
+		std::cout << "5. вывод списка имеющих неудовлетворительные оценки.\n";
+		std::cout << std::endl;
+		std::cout << "выберите пункт меню: ";
+		std::cin >> choise;
+		switch (choise) {
+			case 1:
+				system("cls");
+				for(int i = 0; i < amount; i++)
+					stud_out(students[i]);
+				break;
+			case 2:
+				system("cls");
+				char surname[256];
+				bool flag;
+				flag = false;
+				std::cout << "введите фамилию студента: ";
+				std::cin >> surname;
+				if(surname[0] >= 'а' && surname[0] <= 'я')
+					surname[0] = (surname[0] - 32);
+				else if(surname[0] >= 'a' && surname[0] <= 'z')
+					surname[0] = (surname[0] - 32);
+				for(int i = 0; i < amount ; i++) {
+					if(strcmp(surname, students[i].surname) == 0) {
+						std::cout << "средний балл студента " << surname << ": " << average_score(students[i]) << std::endl;
+						flag = true;
+					}
+				}
+				if(!flag)
+					std::cout << "в списке нет студентов с введенной фамилией, просмотрите заново список студентов." << std::endl;
+				break;
+			case 3:
+				system("cls");
+				std::cout << "общий средний балл всех студентов: " << overall_av_sc(students, amount) << std::endl;
+				break;
+			case 4:
+				system("cls");
+				std::cout << "\t\tсписок отличников" << std::endl;
+				for(int i = 0; i < amount; i++)
+					if(average_score(students[i]) > 6)
+						stud_out(students[i]);
+				break;
+			case 5:
+				system("cls");
+				std::cout << "\t\tсписок имеющих неудовлетворительные оценки" << std::endl;
+				for(int i = 0; i < amount; i++)
+					if(average_score(students[i]) <= 6)
+						stud_out(students[i]);
+				break;
+			default:
+				system("cls");
+				std::cout << "в меню нет пункта под выбраным номером, введите другое значение." << std::endl;
+				break;
+		}
+		std::cout << "повторить операцию(y/n): ";
+		std::cin >> symbol;
+	} while(symbol != 'n' && symbol != 'N');
+	delete[]students;
+	system("pause");
+	return 0;
+}
+
+// - - - - - - - - - - //
+
+Functions.h
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+
+struct Student {
+	char name[256];
+	char surname[256];
+	char mid_name[256];
+	int group;
+	char gradebook[7];
+	int grades[5];
+};
+
+void stud_input(Student &student) {
+	srand((unsigned)time(0));
+	std::cout << "введите имя студента: ";
+	std::cin >> student.name;
+	std::cout << "введите фамилию студента: ";
+	std::cin >> student.surname;
+	std::cout << "введите отчество студента: ";
+	std::cin >> student.mid_name;
+	std::cout << "введите номер группы студента: ";
+	std::cin >> student.group;
+	for(int i = 0; i < 6; i++)
+		student.gradebook[i] = rand() % 10 + '0';
+	student.gradebook[6] = '\0';
+	for(int i = 0; i < 5; i++) {
+		std::cout << "введите " << i + 1 << "-ую " << "оценку студента: ";
+		std::cin >> student.grades[i];
+	}
+}
+void stud_out(const Student &student) {
+	char string[] = "\t\tФИО\t      |\tГРУППА\t  |\tНОМЕР ЗАЧЕТКИ\t  |\tОЦЕНКИ\t\t|";
+	for(int i = 0; i < 45; i++)
+		std::cout << "- ";
+	std::cout << std::endl;
+	std::cout << string << std::endl;
+	for(int i = 0; i < 45; i++)
+		std::cout << "- ";
+	std::cout << std::endl;
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << student.surname 
+			  << std::setiosflags(std::ios::left) << std::setw(10) << student.name 
+			  << std::setiosflags(std::ios::left) << std::setw(10) << student.mid_name 
+			  << '|' << '\t';
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << student.group << '|' << '\t';
+	std::cout << std::setiosflags(std::ios::left) << std::setw(18) << student.gradebook << '|' << '\t';
+	for(int i = 0; i < 5; i++)
+		std::cout << student.grades[i] << ' ';
+	std::cout << '\t' << '|' << std::endl;
+	for(int i = 0; i < 45; i++)
+		std::cout << "- ";
+	std::cout << std::endl;
+}
+
+int average_score(const Student &student) {
+	int av_sc = 0;
+	for(int i = 0; i < 5; i++)
+		av_sc += student.grades[i];
+	av_sc /= 5;
+	return av_sc;
+}
+int overall_av_sc(const Student student[], int amount) {
+	int ov_av_sc = 0;
+	for(int i = 0; i < amount; i++)
+		ov_av_sc += average_score(student[i]);
+	ov_av_sc /= amount;
+	return ov_av_sc;
+}
+
+
+
+
+2. В постфиксной записи (или обратной польской записи) операция записывается после двух операндов. 
+Например, сумма двух чисел A и B записывается как A B +. 
+Запись B C + D * обозначает, привычное нам  (B + C) * D, 
+а запись A B C + D * + означает A + (B + C) * D. 
+Достоинство постфиксной записи в том, что она не требует скобок и дополнительных соглашений о приоритете операторов для своего чтения. 
+Вычислить значение выражения записанного в постфиксной записи используя динамическую структуру данных стек.
+
+
+
+Дополнительная задача:
+Дано выражение, содержащее целые числа, операции +, - ,  * , /   и скобки любой степени вложенности. 
+Вычислите значение записанного выражения переведя его в обратную польскую запись.

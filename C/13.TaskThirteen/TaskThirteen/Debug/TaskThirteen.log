@@ -1,0 +1,7 @@
+﻿  main.cpp
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\TaskThirteen\main.cpp(10): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\TaskThirteen\main.cpp(102): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\TaskThirteen\main.cpp(104): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\TaskThirteen\main.cpp(115): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\TaskThirteen\main.cpp(117): warning C4018: <: несоответствие типов со знаком и без знака
+  TaskThirteen.vcxproj -> C:\Users\null\Documents\ItStep\PracticalWork\C++\TaskThirteen\Debug\TaskThirteen.exe

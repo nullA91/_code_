@@ -1,0 +1,311 @@
+/*
+// - - - - - - - - - - //
+// Дано два текстовых файла. Выяснить, совпадают ли их строки. Если нет, то вывести несовпадающую строку из каждого файла.
+// - - - - - - - - - - //
+
+#include <iostream>
+#include <Windows.h>
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	FILE *file1 = NULL, *file2 = NULL;
+	char file_name_1[] = "первый текстовый файл.txt";
+	char file_name_2[] = "второй текстовый файл.txt";
+	char string1[256], string2[256];
+	fopen_s(&file1, file_name_1, "r");
+	fopen_s(&file2, file_name_2, "r");
+	if(file1 == NULL || file2 == NULL) {
+		printf_s("невозможно открыть файл.");
+		return 0;
+	}
+	while(!feof(file1) || !feof(file2)) {
+		fgets(string1, 255, file1);
+		fgets(string2, 255, file2);
+		if(strcmp(string1, string2) == 0)
+			continue;
+		else
+			printf_s("несовпадающая строка в первом файле: %s\nнесовпадающая строка во втором файле: %s\n", string1, string2);
+	}
+	fclose(file1);
+	fclose(file2);
+	system("pause");
+	return 0;
+}
+*/
+
+/*
+// - - - - - - - - - - //
+// Дан текстовый файл. Необходимо создать новый файл и записать в него следующую статистику по исходному файлу:
+// Количество символов
+// Количество строк
+// Количество гласных букв
+// Количество согласных букв
+// Количество цифр.
+// - - - - - - - - - - //
+//а, е, ё, и, о, у, ы, э, ю, я  
+//б, в, г, д, ж, з, к, л, м, н, п, р, с, т, ф, х, ц, ч, ш, щ
+//a, e, i, o, u, y
+//b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, z
+
+bool vowels(char);
+bool consonants(char);
+
+#include <iostream>
+#include <Windows.h>
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int amount_symbols = 0, amount_strings = 0, amount_vowels = 0, amount_consonants = 0, amount_figures = 0;
+	char file_name[] = "третий текстовый файл.txt";
+	char string[10];
+	char symbol;
+	bool check = true;
+	FILE *file1 = NULL, *file2 = NULL;
+	fopen_s(&file1, file_name, "r");
+	if(file1 == NULL) {
+		printf_s("невозможно открыть файл.");
+		return 0;
+	}
+	while((symbol = fgetc(file1)) != EOF) {
+		if((symbol >= 'À' && symbol <= 'ß') || (symbol >= 'à' && symbol <= 'ÿ')) {
+			amount_symbols++;
+			check = true;
+		}
+		else if((symbol >= 'A' && symbol <= 'Z') || (symbol >= 'a' && symbol <= 'z')) {
+			amount_symbols++;
+			check = true;
+		}
+		else if(symbol == '\n') {
+			amount_strings++;
+			check = true;
+		}
+		else if(symbol >= '0' && symbol <= '9' && check == true) {
+			amount_figures++;
+			check = false;
+		}
+		else if(!(symbol >= '0' && symbol <= '9'))
+			check = true;
+		if(vowels(symbol))
+			amount_vowels++;
+		if(consonants(symbol))
+			amount_consonants++;
+	}
+	fclose(file1);
+	fopen_s(&file2, "количество.txt", "w");
+	if(file2 == NULL) {
+		printf_s("невозможно открыть файл.";
+		return 0;
+	}
+	fputs("количество букв: ", file2);
+	sprintf_s(string, "%i", amount_symbols);
+	fputs(string, file2);
+	fputc('\n', file2);
+	fputs("количество строк: ", file2);
+	sprintf_s(string, "%i", amount_strings);
+	fputs(string, file2);
+	fputc('\n', file2);
+	fputs("количество глассных букв: ", file2);
+	sprintf_s(string, "%i", amount_vowels);
+	fputs(string, file2);
+	fputc('\n', file2);
+	fputs("количество согласных букв: ", file2);
+	sprintf_s(string, "%i", amount_consonants);
+	fputs(string, file2);
+	fputc('\n', file2);
+	fputs("количество цифр: ", file2);
+	sprintf_s(string, "%i", amount_figures);
+	fputs(string, file2);
+	fputc('\n', file2);
+	fclose(file2);
+	system("pause");
+	return 0;
+}
+
+bool vowels(char symbol) {
+	bool flag = false;
+	char rus_str1[] = "аеёиоуыэюя";
+	char rus_str2[] = "АЕЁИОУЫЭЮЯ";
+	char eng_str1[] = "aeiouy";
+	char eng_str2[] = "AEIOUY";
+	for(int i = 0; i < strlen(rus_str1); i++) {
+		if(symbol == rus_str1[i]) {
+			flag = true;
+			break;
+		}
+	}
+	for(int i = 0; i < strlen(rus_str2); i++) {
+		if(symbol == rus_str2[i]) {
+			flag = true;
+			break;
+		}
+	}
+	for(int i = 0; i < strlen(eng_str1); i++) {
+		if(symbol == eng_str1[i]) {
+			flag = true;
+			break;
+		}
+	}
+	for(int i = 0; i < strlen(eng_str2); i++) {
+		if(symbol == eng_str2[i]) {
+			flag = true;
+			break;
+		}
+	}
+	return flag;
+}
+bool consonants(char symbol) {
+	bool flag = false;
+	char rus_str1[] = "бвгджзклмнпрстфхцчшщ";
+	char rus_str2[] = "БВГДЖЗКЛМНПРСТФХЦЧШЩ";
+	char eng_str1[] = "bcdfghjklmnpqrstvwxz";
+	char eng_str2[] = "BCDFGHJKLMNPQRSTVWXZ";
+	for(int i = 0; i < strlen(rus_str1); i++) {
+		if(symbol == rus_str1[i] || symbol == rus_str2[i]) {
+			flag = true;
+			break;
+		}
+	}
+	for(int i = 0; i < strlen(eng_str1); i++) {
+		if(symbol == eng_str1[i] || symbol == eng_str2[i]) {
+			flag = true;
+			break;
+		}
+	}
+	return flag;
+}
+*/
+
+
+/*
+// - - - - - - - - - - //
+// Описать структуру, с именем TRAIN, содержащий следующие поля: 
+// название пункта назначения; 
+// номер поезда; 
+// экспресс или нет.
+// Создать массив структур, данные прочитать изt файла Input.txt
+// Реализовать  функции:
+// вывод в файл Output.txt. информации о поездах, направляющихся в пункт, название которого введено с клавиатуры; 
+// вывод  в файл  Output.txt. всех поездов экспресс, направляющихся в заданный пункт назначения
+// - - - - - - - - - - //
+
+#include <iostream>
+#include <Windows.h>
+
+struct Train {
+	char destanation[256];
+	int number;
+	bool express;
+};
+
+void reverse(char*);
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	FILE *input = NULL, *output = NULL;
+	Train trains[5];
+	char string[256], temp[256], destanation[256];
+	int index = 0;
+	fopen_s(&input, "Input.txt", "r");
+	if(input == NULL) {
+		printf_s("невозможно открыть файл.");
+		return 1;
+	}
+	for(int i = 0; i < 5; i++) {
+		fgets(string, 255, input);
+		for(int j = strlen(string) - 2; string[j] != ' '; j--)
+			trains[i].destanation[index++] = string[j];
+		trains[i].destanation[index] = '\0';
+		reverse(trains[i].destanation);
+		index = 0;
+		fgets(string, 255, input);
+		for(int j = strlen(string) - 2; string[j] != ' '; j--)
+			temp[index++] = string[j];
+		temp[index] = '\0';
+		reverse(temp);
+		trains[i].number = atoi(temp);
+		index = 0;
+		fgets(string, 255, input);
+		for(int j = strlen(string) - 2; string[j] != ' '; j--)
+			temp[index++] = string[j];
+		temp[index] = '\0';
+		reverse(temp);
+		if(strcmp("да", temp) == 0)
+			trains[i].express = true;
+		else
+			trains[i].express = false;
+		index = 0;
+		fgets(string, 255, input);
+	}
+	fclose(input);
+	fopen_s(&output, "Output.txt", "w");
+	if(output == NULL) {
+		printf_s("невозможно открыть файл.");
+		return 1;
+	}
+	printf_s("введите пункт назначения: ");
+	gets_s(destanation);
+	fputs("        поезда направляющиеся в пункт назначения", output);
+	fputc('\n', output);
+	for(int i = 0; i < 5; i++) {
+		char temp[256] = "";
+		if(strcmp(destanation, trains[i].destanation) == 0) {
+			fputs("название пункта назначения: ", output);
+			fputs(trains[i].destanation, output);
+			fputc('\n', output);
+			fputs("номер поезда: ", output);
+			sprintf_s(temp, "%i", trains[i].number);
+			fputs(temp, output);
+			fputc('\n', output);
+			fputs("экспресс: ", output);
+			if(trains[i].express == true)
+				fputs("да", output);
+			else
+				fputs("нет", output);
+			fputc('\n', output);
+		}
+	}
+	fputs("        экспресс поезда направляющиеся в пункт назначения", output);
+	fputc('\n', output);
+	for(int i = 0; i < 5; i++) {
+		char temp[256] = "";
+		if(strcmp(destanation, trains[i].destanation) == 0 && trains[i].express == 1) {
+			fputs("название пункта назначения: ", output);
+			fputs(trains[i].destanation, output);
+			fputc('\n', output);
+			fputs("номер поезда: ", output);
+			sprintf_s(temp, "%i", trains[i].number);
+			fputs(temp, output);
+			fputc('\n', output);
+			fputs("экспресс: ", output);
+			if(trains[i].express == true)
+				fputs("да", output);
+			else
+				fputs("нет", output);
+			fputc('\n', output);
+		}
+	}
+	fclose(output);
+	puts("\t\tсписок всех поездов");
+	for(int i = 0; i < 5; i++) {
+		printf_s("пункт назначения: %s\n", trains[i].destanation);
+		//std::cout << "пункт назначения: " << trains[i].destanation << std::endl;
+		printf_s("номер поезда: %i\n", trains[i].number);
+		//std::cout << "номер поезда: "  << trains[i].number << std::endl;
+		if(trains[i].express == true)
+			puts("экспресс: да");
+		else
+			puts("экспресс: нет");
+		//std::cout << "экспресс: " << trains[i].express << std::endl;
+	}
+	system("pause");
+	return 0;
+}
+
+void reverse(char *string) {
+	for(int i = 0, j = strlen(string) - 1; i < strlen(string) / 2; i++, j--)
+		std::swap(string[i], string[j]);
+}
+*/

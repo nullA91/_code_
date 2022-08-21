@@ -1,0 +1,261 @@
+Задание 7. Тема: Шаблоны классов 
+Задание 1.
+Создать шаблонный класс-контейнер Array, который представляет собой массив, позволяющий хранить объекты заданного типа. Класс должен реализовывать следующие функции:
+GetSize – получение размера массива (количество элементов, под которые выделена память);
+GetUpperBound - получение последнего допустимого индекса в массиве. Например, если при размере массива 10, вы добавляете в него 4 элемента, то функция вернет 3; 
+IsEmpty – проверка массива на пустоту; 
+■ FreeExtra - удалить «лишнюю» память (выше последнего допустимого индекса); 
+GetAt -получение определенного элемента (по индексу); 
+SetAt – установка нового значения для определенного элемен- та (индекс элемента должен быть меньше текущего размера массива); 
+operator [] – для реализации двух предыдущих функций; 
+Add – добавление элемента в массив (при необходимости массив увеличивается на значение grow функции SetSize); 
+Append – «сложение» двух массивов; 
+operator =; 
+InsertAt – вставка элемента(-ов) в заданную позицию;
+RemoveAt – удаление элемента(-ов) с заданной позиции.
+Реализовать итераторы (указатели) для удобного доступа к элементам.
+Протестировать работу контейнера на встроенных типах данных и на классах Rational, Complex, Reservoir.
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+
+main.cpp
+#include "Array.h"
+#include <stdlib.h>
+
+int main() {
+    char symbol;
+    int check, index;
+    double number = 1.0, value;
+    Array<double, 10> array;
+    for(int i = 0; i < 10; i++, number += 0.1)
+        array[i] = number;
+    do {
+        std::cout << "+-------------------------------------------------------------+" << std::endl;
+        std::cout << "|                            меню                             |" << std::endl;
+        std::cout << "+-------------------------------------------------------------+" << std::endl;
+        std::cout << "|1. | получение размера массива.                              |" << std::endl;
+        std::cout << "|2. | получение последнего допустимого индекса в массиве.     |" << std::endl;
+        std::cout << "|3. | проверка массива на пустоту.                            |" << std::endl;
+        std::cout << "|4. | получение определенного элемента(по индексу).           |" << std::endl;
+        std::cout << "|5. | установка нового значения для определенного элемента.   |" << std::endl;
+        std::cout << "|6. | добавление элемента в конец массива.                    |" << std::endl;
+        std::cout << "|7. | сложение двух массивов.                                 |" << std::endl;
+        std::cout << "|8. | вставка элемента в заданную позицию.                    |" << std::endl;
+        std::cout << "|9. | удаление элемента с заданной позиции.                   |" << std::endl;
+        std::cout << "|10.| вывод содержимого массивы.                              |" << std::endl;
+        std::cout << "+-------------------------------------------------------------+" << std::endl;
+        std::cout << "выберите пункт меню: ";
+        std::cin >> check;
+        system("clear");
+        switch(check) {
+            case 1:
+                std::cout << array.GetSize() << std::endl;
+                break;
+            case 2:
+                std::cout << array.GetUpperBound() << std::endl;
+                break;
+            case 3:
+                if(array.IsEmpty())
+                    std::cout << "массив не пуст." << std::endl;
+                else
+                    std::cout << "массив пуст." << std::endl;
+                break;
+            case 4:
+                std::cout << "введите порядковый номер индекса: ";
+                std::cin >> index;
+                std::cout << array.GetAt(index) << std::endl;
+                break;
+            case 5:
+                std::cout << "введите порядковый номер индекса: ";
+                std::cin >> index;
+                std::cout << "введите новое значение: ";
+                std::cin >> value;
+                array.SetAt(index, value);
+                break;
+            case 6:
+                std::cout << "введите новое значение: ";
+                std::cin >> value;
+                array.AddEnd(value);
+                break;
+            case 7:
+                array = array.Append(array);
+                break;
+            case 8:
+                std::cout << "введите порядковый номер индекса: ";
+                std::cin >> index;
+                std::cout << "введите новое значение: ";
+                std::cin >> value;
+                array.InsertAt(index, value);
+                break;
+            case 9:
+                std::cout << "введите порядковый номер индекса: ";
+                std::cin >> index;
+                array.RemoveAt(index);
+                break;
+            case 10:
+                for(int i = 0; i < 10; i++)
+                    std::cout << '|' << array[i];
+                std::cout << '|' << std::endl;
+                break;
+            default:
+                std::cout << "в меню нет пункта под выбранным номером." << std::endl;
+        }
+        std::cout << "повторить операцию(y/n)? ";
+        std::cin >> symbol;
+    } while(symbol != 'n' && symbol != 'N');
+    return 0;
+}
+
++==========+
+
+Array.h
+#ifndef ARRAY_H
+#define ARRAY_H
+#include <iostream>
+
+typedef const unsigned int u_size;
+
+template<typename data_type, u_size size>
+class Array {
+    private:
+        data_type* data;
+    public:
+        // конструктор и деструктор
+        Array();
+        ~Array();
+        // методы класса
+        int GetSize() const;
+        int GetUpperBound() const;
+        bool IsEmpty() const;
+        const data_type GetAt(const int) const;
+        void SetAt(const int, data_type);
+        void AddEnd(data_type);
+        const Array Append(const Array&) const;
+        void InsertAt(const int, data_type);
+        void RemoveAt(const int);
+        // перегрузка операторов
+        data_type& operator[](const int);
+        const data_type& operator[](const int) const;
+        const Array& operator=(const Array&);
+};
+// конструктор и деструктор
+template<typename data_type, u_size size>
+Array<data_type, size>::Array() : data(new data_type[size]) {}
+
+template<typename data_type, u_size size>
+Array<data_type, size>::~Array() { delete[]data; }
+// методы класса
+template<typename data_type, u_size size>
+int Array<data_type, size>::GetSize() const {
+    return size;
+}
+
+template<typename data_type, u_size size>
+int Array<data_type, size>::GetUpperBound() const {
+    int index = 0;
+    for(unsigned int i = 1; i <= size; i++)
+        if(data[i - 1] != NULL)
+            index = i;
+    if(index == 0)
+        return index;
+    return index - 1;
+}
+
+template<typename data_type, u_size size>
+bool Array<data_type, size>::IsEmpty() const {
+    bool flag = false;
+    for(unsigned int i = 0; i < size; i++)
+        if(data[i] != NULL)
+            flag = true;
+    return flag;
+}
+
+template<typename data_type, u_size size>
+const data_type Array<data_type, size>::GetAt(const int index) const {
+    if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+        std::cout << "неправильно введен индекс!" << std::endl;
+    return this->data[index];
+}
+
+template<typename data_type, u_size size>
+void Array<data_type, size>::SetAt(const int index, data_type value) {
+    if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+        std::cout << "неправильно введен индекс!" << std::endl;
+    else
+        this->data[index] = value;
+}
+
+template<typename data_type, u_size size>
+void Array<data_type, size>::AddEnd(data_type value) {
+    if(this->GetUpperBound() < size - 1)
+        this->data[GetUpperBound() + 1] = value;
+    else
+        std::cout << "массив заполнен, добавление элемента невозможно." << std::endl;
+}
+
+template<typename data_type, u_size size>
+const Array<data_type, size> Array<data_type, size>::Append(const Array& array) const {
+    Array<data_type, size> temp;
+    for(int i = 0; i < array.GetSize(); i++)
+        temp.data[i] = this->data[i] + array.data[i];
+    return temp;
+}
+
+template<typename data_type, u_size size>
+void Array<data_type, size>::InsertAt(const int index, data_type value) {
+    if(static_cast<unsigned int>(this->GetUpperBound()) < size - 1) {
+        if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+            std::cout << "неправильно введен индекс!" << std::endl;
+        else {
+            if(index <= this->GetUpperBound()) {
+                for(int i = this->GetUpperBound(); i >= index; i--)
+                    this->data[i + 1] = this->data[i];
+                this->data[index] = value;
+            }
+            else
+                this->data[index] = value;
+        }
+    }
+    else
+        std::cout << "массив заполнен, добавление элемента невозможно." << std::endl;
+}
+
+template<typename data_type, u_size size>
+void Array<data_type, size>::RemoveAt(const int index) {
+    if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+        std::cout << "неправильно введен индекс!" << std::endl;
+    else {
+        if(data[index] != NULL) {
+            for(int i = index; i < this->GetUpperBound(); i++)
+                this->data[i] = this->data[i + 1];
+            this->data[this->GetUpperBound()] = NULL;
+        }
+        else
+            std::cout << "по заданной позиции отсутствует значение" << std::endl;
+    }
+}
+// перегрузка операторов
+template<typename data_type, u_size size>
+const data_type& Array<data_type, size>::operator[](const int index) const {
+    data_type temp = data[index];
+    if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+        std::cout << "неправильно введен индекс!" << std::endl;
+    return this->data[index];
+}
+
+template<typename data_type, u_size size>
+data_type& Array<data_type, size>::operator[](const int index) {
+    if(!(static_cast<unsigned int>(index) >= 0 && static_cast<unsigned int>(index) < size))
+        std::cout << "неправильно введен индекс!" << std::endl;
+    return this->data[index];
+
+}
+
+template<typename data_type, u_size size>
+const Array<data_type, size>& Array<data_type, size>::operator=(const Array<data_type, size>& array) {
+    for(unsigned int i = 0; i < size; i++)
+        this->data[i] = array.data[i];
+    return *this;
+}
+
+#endif // ARRAY_H

@@ -1,0 +1,206 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpLife {
+    class Program {
+        static void Main(string[] args) {
+            Console.Title = "игра жизнь";
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            int height = 3;
+            int width = 12;
+            int count = 0;
+            int amount;
+            int neighbors = 0;
+            var key = Console.ReadKey();
+            Random random = new Random();
+            char[,] lifeTable;
+            lifeTable = new char[int.Parse(args[0]), int.Parse(args[1])];
+            Console.Write("введите начальное количество клеток для заселения: ");
+            amount = int.Parse(Console.ReadLine());
+            while (count <= amount) {
+                for (int i = 0; i < int.Parse(args[0]); i++) {
+                    for (int j = 0; j < int.Parse(args[1]); j++) {
+                        if (i == height && j == width) {
+                            lifeTable[i, j] = '+';
+                            height = random.Next(0, int.Parse(args[0]));
+                            width = random.Next(0, int.Parse(args[1]));
+                            count++;
+                        }
+                    }
+                }
+            }
+            while (key.Key != ConsoleKey.Escape) {
+                switch (key.Key) {
+                    case ConsoleKey.Tab:
+                        Console.Clear();
+                        for (int i = 0; i < int.Parse(args[0]); i++) {
+                            for (int j = 0; j < int.Parse(args[1]); j++) {
+                                if (lifeTable[i, j] == '+') {
+                                    neighbors = 0;
+                                    if (i == 0 && j == 0) {
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (i == 0 && j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1 && j == 0) {
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1 && j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (j == 0) {
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (i == 0) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                    else {
+                                        if (lifeTable[i - 1, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i - 1, j] == '+') neighbors++;
+                                        if (lifeTable[i - 1, j + 1] == '+') neighbors++;
+                                        if (lifeTable[i, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i, j + 1] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j + 1] == '+') neighbors++;
+                                        if (neighbors > 3 || neighbors < 2) lifeTable[i, j] = ' ';
+                                    }
+                                }
+                                else {
+                                    neighbors = 0;
+                                    if (i == 0 && j == 0) {
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (i == 0 && j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1 && j == 0) {
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1 && j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (j == 0) {
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (j == int.Parse(args[1]) - 1) {
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (i == 0) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i + 1, j - 1] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else if (i == int.Parse(args[0]) - 1) {
+                                        if (lifeTable[i, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j - 1] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j] == '+') ++neighbors;
+                                        if (lifeTable[i - 1, j + 1] == '+') ++neighbors;
+                                        if (lifeTable[i, j + 1] == '+') ++neighbors;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                    else {
+                                        if (lifeTable[i - 1, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i - 1, j] == '+') neighbors++;
+                                        if (lifeTable[i - 1, j + 1] == '+') neighbors++;
+                                        if (lifeTable[i, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i, j + 1] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j - 1] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j] == '+') neighbors++;
+                                        if (lifeTable[i + 1, j + 1] == '+') neighbors++;
+                                        if (neighbors == 3) lifeTable[i, j] = '+';
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                }
+                Console.WriteLine("\t\tигра жизнь");
+                for (int i = 0; i < int.Parse(args[0]); i++) {
+                    for (int k = 0; k < int.Parse(args[0]); k++)
+                        Console.Write(" -");
+                    Console.WriteLine();
+                    Console.Write("|");
+                    for (int j = 0; j < int.Parse(args[1]); j++)
+                        Console.Write(lifeTable[i, j] + "|");
+                    Console.WriteLine();
+                }
+                for (int k = 0; k < int.Parse(args[0]); k++)
+                    Console.Write(" -");
+                Console.WriteLine("\nнажмите клавишу \"Tab\" для продолжения.");
+                Console.WriteLine("нажмите клавишу \"Esc\" для выхода.");
+                Console.WriteLine();
+                key = Console.ReadKey();
+            }
+        }
+    }
+}

@@ -1,0 +1,373 @@
+Разработать класс Fraction, представляющий простую дробь . в классе предусмотреть два поля: числитель и знаменатель дроби . Выполнить перегрузку следующих операторов: +,-,*,/,==,!=,<,>, true и false . Арифметические действия и сравнение выполняется в соответствии с правилами работы с дробями . Оператор true возвращает true если дробь правильная (числитель меньше знаменателя), оператор false возвращает true если дробь неправильная (числитель больше знаменателя) . Выполнить перегрузку операторов, необходимых для успешной компиляции следующего фрагмента кода:
+
+Fraction f = new Fraction(3, 4);
+ int a = 10;
+ Fraction f1 = f * a;
+ Fraction f2 = a * f;
+ double d = 1.5;
+ Fraction f3 = f + d;
+
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask7 {
+    class Program {
+        static void Main(string[] args) {
+            int numerator, denominator, choise;
+            Fraction fraction, fraction1, fraction2;
+            do {
+                Console.WriteLine("\n\t\"меню\"");
+                Console.WriteLine("1. сложение дробей(оператор \'+\').");
+                Console.WriteLine("2. вычитание дробей(оператор \'-\').");
+                Console.WriteLine("3. умножение дробей(оператор \'*\').");
+                Console.WriteLine("4. деление дробей(оператор \'\\').");
+                Console.WriteLine("5. равенство дробей(оператор \'==\').");
+                Console.WriteLine("6. неравенство дробей(оператор \'!=\').");
+                Console.WriteLine("7. нахождение меньшей дроби(оператор \'<\').");
+                Console.WriteLine("8. нахождение большей дроби(оператор \'>\').");
+                Console.WriteLine("9. проверка дроби на правильность(оператор \'true\').");
+                Console.WriteLine("0. выход.");
+                Console.Write("\nвыберите пункт меню: ");
+                choise = int.Parse(Console.ReadLine());
+                switch (choise) { 
+                    case 1:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        fraction = fraction1 + fraction2;
+                        Console.WriteLine("\nрезультат: " + fraction.Numerator + "/" + fraction.Denominator);
+                        break;
+                    case 2:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        fraction = fraction1 - fraction2;
+                        Console.WriteLine("\nрезультат: " + fraction.Numerator + "/" + fraction.Denominator);
+                        break;
+                    case 3:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        fraction = fraction1 * fraction2;
+                        Console.WriteLine("\nрезультат: " + fraction.Numerator + "/" + fraction.Denominator);
+                        break;
+                    case 4:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        fraction = fraction1 / fraction2;
+                        Console.WriteLine("\nрезультат: " + fraction.Numerator + "/" + fraction.Denominator);
+                        break;
+                    case 5:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        if (fraction1 == fraction2)
+                            Console.WriteLine("\nрезультат: дроби равны.");
+                        else
+                            Console.WriteLine("\nрезультат: дроби неравны.");
+                        break;
+                    case 6:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        if (fraction1 != fraction2)
+                            Console.WriteLine("\nрезультат: дроби неравны.");
+                        else
+                            Console.WriteLine("\nрезультат: дроби равны.");
+                        break;
+                    case 7:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        if (fraction1 < fraction2)
+                            Console.WriteLine("\nрезультат: первая дробь меньше 2 -ой.");
+                        else
+                            Console.WriteLine("\nрезультат: первая дробь больше или равна 2 -ой.");
+                        break;
+                    case 8:
+                        Console.Write("введите числитель 1 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 1 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction1 = new Fraction(numerator, denominator);
+                        Console.Write("введите числитель 2 -ой дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель 2 -ой дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction2 = new Fraction(numerator, denominator);
+                        if (fraction1 > fraction2)
+                            Console.WriteLine("\nрезультат: первая дробь больше 2 -ой.");
+                        else
+                            Console.WriteLine("\nрезультат: первая дробь меньше или равна 2 -ой.");
+                        break;
+                    case 9:
+                        Console.Write("введите числитель дроби: ");
+                        numerator = int.Parse(Console.ReadLine());
+                        Console.Write("введите знаменатель дроби: ");
+                        denominator = int.Parse(Console.ReadLine());
+                        fraction = new Fraction(numerator, denominator);
+                        if (fraction)
+                            Console.WriteLine("\nрезультат: дробь правильная.");
+                        else
+                            Console.WriteLine("\nрезультат: дробь неправильная.");
+                        break;
+                    case 0:
+                        choise = 0;
+                        break;
+                    default:
+                        Console.WriteLine("в меню нет пункта под выбраным номером, введите другое значение.");
+                        break;
+                }
+            } while (choise != 0);
+            Console.WriteLine("операция завершена, до свидания.");
+            Console.WriteLine("\t\"фрагмент кода\"");
+            Fraction f = new Fraction(3, 4);
+            int a = 10;
+            Fraction f1 = f * a;
+            Fraction f2 = a * f;
+            double d = 1.5;
+            Fraction f3 = f + d;
+            Console.WriteLine("\nрезультат f1: " + f1.Numerator + "/" + f1.Denominator);
+            Console.WriteLine("результат f2: " + f2.Numerator + "/" + f2.Denominator);
+            Console.WriteLine("результат f3: " + f3.Numerator + "/" + f3.Denominator);
+            Console.WriteLine();
+        }
+    }
+}
+
+Fraction.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask7 {
+    class Fraction {
+        private int numerator;
+        private int denominator;
+
+        public Fraction() {
+            numerator = 1;
+            denominator = 1;
+        }
+        public Fraction(int numerator = 1, int denominator = 1) {
+            if (denominator != 0) {
+                this.numerator = numerator;
+                this.denominator = denominator;
+            }
+            else
+                Console.WriteLine("введите другое значание знаменателя(знаменатель не должен быть равен нулю).");
+        }
+
+        public int Numerator { get { return numerator; } set { numerator = value; } }
+        public int Denominator { get { return denominator; } set { denominator = value; } }
+
+        public int Nod(int numerator, int denominator) {
+            int temp;
+            numerator = Math.Abs(numerator);
+            denominator = Math.Abs(denominator);
+            while (numerator != 0 && denominator != 0) {
+                if (numerator % denominator > 0) {
+                    temp = numerator;
+                    numerator = denominator;
+                    denominator = temp % denominator;
+                }
+                else
+                    break;
+            }
+            if (denominator != 0 && numerator != 0)
+                return denominator;
+            else
+                return 0;
+        }
+        public Fraction Reduce(Fraction fraction) {
+            int nod = Nod(fraction.numerator, fraction.denominator);
+            if (nod != 0) {
+                fraction.numerator /= nod;
+                fraction.denominator /= nod;
+            }
+            return fraction;
+        }
+
+        public static Fraction operator +(Fraction fraction1, Fraction fraction2) {
+            Fraction fraction = new Fraction();
+            if (fraction1.denominator == fraction2.denominator) {
+                fraction.numerator = fraction1.numerator + fraction2.numerator;
+                fraction.denominator = fraction1.denominator;
+            }
+            else {
+                fraction.numerator = fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator;
+                fraction.denominator = fraction1.denominator * fraction2.denominator;
+            }
+            return fraction.Reduce(fraction);
+        }
+        public static Fraction operator +(Fraction fraction, double number) {
+            Fraction newFraction = new Fraction();
+            int integer, numerator, denominator = 1;
+            string dec = number.ToString();
+            for (int i = dec.Length - 1; dec[i] != ','; i--)
+                denominator *= 10;
+            integer = (int)number;
+            numerator = (int)((number - integer) * denominator);
+            newFraction.numerator = integer * denominator + numerator;
+            newFraction.denominator = denominator;
+            if (newFraction.denominator == fraction.denominator) {
+                newFraction.numerator = fraction.numerator + newFraction.numerator;
+                newFraction.denominator = fraction.denominator;
+            }
+            else {
+                newFraction.numerator = newFraction.numerator * fraction.denominator + fraction.numerator * newFraction.denominator;
+                newFraction.denominator = newFraction.denominator * fraction.denominator;
+            }
+            return newFraction.Reduce(newFraction);
+        }
+        public static Fraction operator -(Fraction fraction1, Fraction fraction2) {
+            Fraction fraction = new Fraction();
+            if (fraction1.denominator == fraction2.denominator) {
+                fraction.numerator = fraction1.numerator - fraction2.numerator;
+                fraction.denominator = fraction1.denominator;
+            }
+            else {
+                fraction.numerator = fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator;
+                fraction.denominator = fraction1.denominator * fraction2.denominator;
+            }
+            return fraction.Reduce(fraction);
+        }
+        public static Fraction operator *(Fraction fraction1, Fraction fraction2) {
+            Fraction fraction = new Fraction();
+            fraction.numerator = fraction1.numerator * fraction2.numerator;
+            fraction.denominator = fraction1.denominator * fraction2.denominator;
+            return fraction.Reduce(fraction);
+        }
+        public static Fraction operator *(Fraction fraction1, int number) {
+            Fraction fraction = new Fraction();
+            fraction.numerator = fraction1.numerator * number;
+            fraction.denominator = fraction1.denominator;
+            return fraction.Reduce(fraction);
+        }
+        public static Fraction operator *(int number, Fraction fraction1) {
+            Fraction fraction = new Fraction();
+            fraction.numerator = number * fraction1.numerator;
+            fraction.denominator = fraction1.denominator;
+            return fraction.Reduce(fraction);
+        }
+        public static Fraction operator /(Fraction fraction1, Fraction fraction2) {
+            Fraction fraction = new Fraction();
+            fraction.numerator = fraction1.numerator * fraction2.denominator;
+            fraction.denominator = fraction1.denominator * fraction2.numerator;
+            return fraction.Reduce(fraction);
+        }
+        public static bool operator ==(Fraction fraction1, Fraction fraction2) {
+            if (fraction1.numerator == fraction2.numerator && fraction1.denominator == fraction2.denominator)
+                return true;
+            else {
+                if (fraction1.numerator * fraction2.denominator == fraction2.numerator * fraction1.denominator && fraction1.denominator * fraction2.denominator == fraction2.denominator * fraction1.denominator)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        public static bool operator !=(Fraction fraction1, Fraction fraction2) {
+            if (fraction1 == fraction2)
+                return false;
+            else
+                return true;
+
+        }
+        public static bool operator <(Fraction fraction1, Fraction fraction2) {
+            if (fraction1.denominator == fraction2.denominator) {
+                if (fraction1.numerator < fraction2.numerator)
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                if (fraction1.numerator * fraction2.denominator < fraction2.numerator * fraction1.denominator && fraction1.denominator * fraction2.denominator == fraction2.denominator * fraction1.denominator)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        public static bool operator >(Fraction fraction1, Fraction fraction2) {
+            if (fraction1.denominator == fraction2.denominator) {
+                if (fraction1.numerator > fraction2.numerator)
+                    return true;
+                else
+                    return false;
+            }
+            else {
+                if (fraction1.numerator * fraction2.denominator > fraction2.numerator * fraction1.denominator && fraction1.denominator * fraction2.denominator == fraction2.denominator * fraction1.denominator)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        public static bool operator true(Fraction fraction) {
+            if (fraction.numerator < fraction.denominator)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator false(Fraction fraction) {
+            if (fraction.numerator > fraction.denominator)
+                return true;
+            else
+                return false;
+        }
+    }
+}

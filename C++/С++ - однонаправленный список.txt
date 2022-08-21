@@ -1,0 +1,212 @@
+#include "Bus.h"
+#include <cstdlib>
+#include <iomanip>
+
+Bus::Bus() : BusNumber(0), name("undefined"), surname("undefined"), middlename("undefined"), RouteNumber(0) {}
+Bus::Bus(const Bus& bus) {
+	BusNumber = bus.BusNumber;
+	name = bus.name;
+	surname = bus.surname;
+	middlename = bus.middlename;
+	RouteNumber = bus.RouteNumber;
+}
+Bus::~Bus() {}
+
+void Bus::Input() {
+	std::cout << "введите номер автобуса: ";
+	std::cin >> BusNumber;
+	std::cout << "введите фамилию водителя: ";
+	std::cin >> surname;
+	std::cin.get();
+	std::cout << "введите имя водителя: ";
+	std::cin >> name;
+	std::cin.get();
+	std::cout << "введите отчество водителя: ";
+	std::cin >> middlename;
+	std::cin.get();
+	std::cout << "введите номер маршрута: ";
+	std::cin >> RouteNumber;
+}
+void Bus::Output() const {
+	std::cout << "+------------------------------+" << std::endl;
+	std::cout << "|       список автобусов       |" << std::endl;
+	std::cout << "+------------------+-----------+" << std::endl;
+	std::cout << "|номер автобуса:   |" << std::setw(11) << std::resetiosflags(std::ios::right) << BusNumber << '|' << std::endl;
+	std::cout << "|фамилия водителя: |" << std::setw(11) << std::resetiosflags(std::ios::right) << surname << '|' << std::endl;
+	std::cout << "|имя водителя:     |" << std::setw(11) << std::resetiosflags(std::ios::right) << name << '|' << std::endl;
+	std::cout << "|отчество водителя:|" << std::setw(11) << std::resetiosflags(std::ios::right) << middlename << '|' << std::endl;
+	std::cout << "|номер маршрута:   |" << std::setw(11) << std::resetiosflags(std::ios::right) << RouteNumber << '|' << std::endl;
+	std::cout << "+------------------+-----------+" << std::endl;
+}
+
+const short Bus::GetBusNumber() const {
+	return BusNumber;
+}
+
+Bus& Bus::operator=(const Bus& bus) {
+	BusNumber = bus.BusNumber;
+	name = bus.name;
+	surname = bus.surname;
+	middlename = bus.middlename;
+	RouteNumber = bus.RouteNumber;
+	return *this;
+}
+
+.........................................
+
+#pragma once
+#include <iostream>
+#include <string>
+
+class Bus {
+	private:
+		short BusNumber;
+		std::string name;
+		std::string surname;
+		std::string middlename;
+		short RouteNumber;
+	public:
+		Bus();
+		Bus(const Bus&);
+		~Bus();
+
+		void Input();
+		void Output() const;
+		const short GetBusNumber() const;
+
+		Bus& operator=(const Bus&);
+};
+
+.........................................
+
+#include "List.h"
+
+List::List() {
+	head = NULL;
+}
+List::~List() {
+	while (head != NULL) {
+		element *temp = head->next;
+		delete head;
+		head = temp;
+	}
+}
+
+void List::add(const Bus bus) {
+	element* temp = new element;
+	temp->bus = bus;
+	temp->next = head;
+	head = temp;
+}
+void List::show() const {
+	element* temp = head;
+	while (temp != NULL) {
+		temp->bus.Output();
+		temp = temp->next;
+	}
+}
+
+const Bus List::remove(const int number) const {
+	element* temp = head;
+	if (head != NULL) {
+		while (head != NULL) {
+			if (temp->bus.GetBusNumber() == number) {
+				//temp->next = nullptr;
+				return temp->bus;
+			}
+			else
+				temp = temp->next;
+		}
+	}
+	else
+		std::cout << "список пуст, добавьте в список хотя-бы одие автобус." << std::endl;
+}
+
+...........................................
+
+#pragma once
+#include "Bus.h"
+
+struct element {
+	Bus bus;
+	element *next;
+};
+
+class List {
+	private:
+		element* head;
+	public:
+		List();
+		~List();
+		
+		void add(const Bus bus);
+		const Bus remove(const int) const;
+		void show() const;
+};
+
+............................................
+
+#include "List.h"
+#include <Windows.h>
+
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	char symbol;
+	short choise;
+	short number;
+	Bus bus;
+	List bus_park;
+	List route;
+	do {
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "|                   меню                   |" << std::endl;
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "|1. добавить автобус в автобусный парк     |" << std::endl;
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "|2. вывести автобус на маршрут             |" << std::endl;
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "|3. вернуть автобус в парк                 |" << std::endl;
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "|4. показать автобусы в списке             |" << std::endl;
+		std::cout << "+------------------------------------------+" << std::endl;
+		std::cout << "выберите пункт меню: ";
+		std::cin >> choise;
+		system("cls");
+		switch (choise) {
+			case 1:
+				bus.Input();
+				bus_park.add(bus);
+				break;
+			case 2:
+				std::cout << "введите номер автобуса: ";
+				std::cin >> number;
+				route.add(bus_park.remove(number));
+				break;
+			case 3:
+				std::cout << "введите номер автобуса: ";
+				std::cin >> number;
+				bus_park.add(route.remove(number));
+				break;
+			case 4:
+				int check;
+				std::cout << "1. вывести список автобусов на маршруте." << std::endl;
+				std::cout << "2. вывести список автобусов находящихся в автобусном парке." << std::endl;
+				std::cin >> check;
+				if (check == 1)
+					bus_park.show();
+				else if (check == 2)
+					route.show();
+				else
+					std::cout << "выберите пункт из списка." << std::endl;
+				break;
+			default:
+				std::cout << "выберите пункт из списка." << std::endl;
+				break;
+		};
+		std::cout << "повторить операцию(y/n)? ";
+		std::cin >> symbol;
+	} while (symbol != 'n' && symbol != 'N');
+	system("pause");
+	return 0;
+}

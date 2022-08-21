@@ -1,0 +1,450 @@
+Задание 1. Реализовать программу “Строительство дома”
+Реализовать:
+• Классы
+House (Дом), Basement (Фундамент), Walls (Стены),
+Door (Дверь), Window (Окно), Roof (Крыша);
+Team (Бригада строителей), Worker (Строитель),
+TeamLeader (Бригадир).
+• Интерфейсы
+IWorker, IPart.
+Все части дома должны реализовать интерфейс IPart
+(Часть дома), для рабочих и бригадира предоставляется
+базовый интерфейс IWorker (Рабочий).
+Домашнее задание №6 Бригада строителей (Team) строит дом (House). Дом
+состоит из фундамента (Basement), стен (Wall), окон
+(Window), дверей (Door), крыши (Part).
+Согласно проекту, в доме должно быть 1 фундамент,
+4 стены, 1 дверь, 4 окна и 1 крыша.
+Бригада начинает работу, и строители последовательно
+“строят” дом, начиная с фундамента. Каждый строитель
+не знает заранее, на чём завершился предыдущий этап
+строительства, поэтому он “проверяет”, что уже постро-
+ено и продолжает работу. Если в игру вступает бригадир
+(TeamLeader), он не строит, а формирует отчёт, что уже
+построено и какая часть работы выполнена.
+В конечном итоге на консоль выводится сообщение, что
+строительство дома завершено и отображается “рисунок
+дома” (вариант отображения выбрать самостоятельно).
+
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    class Program {
+        static void Main(string[] args) {
+            int choise, count = 0, amount = 1, delete = 0;
+            House house;
+            house = new House();
+            TeamLeader foreman;
+            Worker[] workers;
+            foreman = new TeamLeader();
+            workers = new Worker[amount];
+            do {
+                Console.WriteLine("\n\t\"меню\"");
+                Console.WriteLine("1. ввод данных о рабочих и бригадире.");
+                Console.WriteLine("2. строительство дома.");
+                Console.WriteLine("3. вывод достроеных частей дома.");
+                Console.WriteLine("4. вывод данных о рабочих и бригадире.");
+                Console.Write("выберите пункт меню: ");
+                choise = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                switch (choise) { 
+                    case 1:
+                        Console.Write("введите количество рабочих: ");
+                        amount = Convert.ToInt32(Console.ReadLine());
+                        workers = new Worker[amount];
+                        foreman = new TeamLeader();
+                        for (int i = 0; i < amount; i++) {
+                            workers[i] = new Worker();
+                            workers[i].DataEntry();
+                        }
+                        foreman.DataEntry();
+                        break;
+                    case 2:
+                        int index;
+                        Console.WriteLine("количество рабочих на стройке: " + amount);
+                        Console.Write("введите номер рабочего: ");
+                        index = Convert.ToInt32(Console.ReadLine());
+                        if (index != delete) {
+                            delete = index;
+                            workers[index - 1].Build();
+                            count++;
+                        }
+                        else
+                            Console.WriteLine("рабочий занят строительством другой части дома, выберите другого рабочего.");
+                        break;
+                    case 3:
+                        Console.WriteLine("количество построенных частей дома: " + count);
+                        Console.WriteLine("\t\"проект текущей постройки дома\"");
+                        foreman.ProjectOutPut();
+                        break;
+                    case 4:
+                        Console.WriteLine("\n\t\"список рабочих\"");
+                        for (int i = 0; i < amount; i++) {
+                            workers[i].WorkerOutPut();
+                            Console.WriteLine("- - - - - - - - - -");
+                        }
+                        Console.WriteLine("\n\t\"данные о бригадире\"");
+                        foreman.WorkerOutPut();
+                        break;
+                    default:
+                        Console.WriteLine("в меню нет пункта под выбранным номером, введите другое значение.");
+                        break;
+                }
+            } while (count != 6);
+            Console.WriteLine("ДОМ ДОСТРОЕН !!!");
+            house.HouseOutPut();
+        }
+    }
+}
+
+IWorker.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public interface IWorker {
+        void DataEntry();
+        void WorkerOutPut();
+    }
+}
+
+Worker.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Worker : IWorker {
+        private string name;
+        private string surname;
+        private string birthday;
+        private int age;
+        private static IPart[] parts;
+
+        public Worker() {
+            name = "undefined";
+            surname = "undefined";
+            birthday = "undefined";
+            age = 0;
+            parts = new IPart[6];
+            parts[0] = new Basement();
+            parts[1] = new Walls();
+            parts[2] = new Windows();
+            parts[3] = new Door();
+            parts[4] = new Roof();
+            parts[5] = new Chimney();
+        }
+        public Worker(string name, string surname, string birthday, int age) {
+            this.name = name;
+            this.surname = surname;
+            this.birthday = birthday;
+            this.age = age;
+        }
+
+        public void DataEntry() {
+            Console.Write("введите имя: ");
+            name = Console.ReadLine();
+            Console.Write("введите фамилию: ");
+            surname = Console.ReadLine();
+            Console.Write("введите дату рождения(день месяц год): ");
+            birthday = Console.ReadLine();
+            Console.Write("введите количество полных лет: ");
+            age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+        }
+        public void WorkerOutPut() {
+            Console.WriteLine("имя рабочего: " + name);
+            Console.WriteLine("фамилия рабочего: " + surname);
+            Console.WriteLine("дата рождения рабочего: " + birthday);
+            Console.WriteLine("возраст рабочего: " + age);
+        }
+        public void Build() {
+            int choise;
+            Console.WriteLine("\t\"части дома\"");
+            Console.WriteLine("1. фундамент.");
+            Console.WriteLine("2. стены.");
+            Console.WriteLine("3. окна.");
+            Console.WriteLine("4. дверь.");
+            Console.WriteLine("5. крыша.");
+            Console.WriteLine("6. дымоход.");
+            Console.Write("выберите часть дома для строительства: ");
+            choise = Convert.ToInt32(Console.ReadLine());
+            if (choise == 1)
+                parts[0].Drawing(House.house);
+            else if (choise == 2)
+                parts[1].Drawing(House.house);
+            else if (choise == 3)
+                parts[2].Drawing(House.house);
+            else if (choise == 4)
+                parts[3].Drawing(House.house);
+            else if (choise == 5)
+                parts[4].Drawing(House.house);
+            else if (choise == 6)
+                parts[5].Drawing(House.house);
+            else
+                Console.WriteLine("под выбраным номером отсутствует часть дома, введите другое значение.");
+        }
+    }
+}
+
+TeamLeader.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class TeamLeader : IWorker {
+        private string name;
+        private string surname;
+        private string birthday;
+        private int age;
+
+        public TeamLeader() {
+            name = "undefined";
+            surname = "undefined";
+            birthday = "undefined";
+            age = 0;
+        }
+        public TeamLeader(string name, string surname, string birthday, int age) {
+            this.name = name;
+            this.surname = surname;
+            this.birthday = birthday;
+            this.age = age;
+        }
+
+        public void DataEntry() {
+            Console.WriteLine("\t\"данные бригадира\"");
+            Console.Write("введите имя бригадира: ");
+            name = Console.ReadLine();
+            Console.Write("введите фамилию бригадира: ");
+            surname = Console.ReadLine();
+            Console.Write("введите дату рождения(день месяц год): ");
+            birthday = Console.ReadLine();
+            Console.Write("введите количество полных лет: ");
+            age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+        }
+        public void WorkerOutPut() {
+            Console.WriteLine("имя бригадира: " + name);
+            Console.WriteLine("фамилия бригадира: " + surname);
+            Console.WriteLine("дата рождения бригадира: " + birthday);
+            Console.WriteLine("возраст бригадира: " + age);
+        }
+        public void ProjectOutPut() { 
+            for (int i = 0; i < 27; i++) {
+                for (int j = 0; j < 39; j++)
+                    Console.Write(House.house[i, j]);
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+IPart.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public interface IPart {
+        void Drawing(char[,] array);
+    }
+}
+
+Chimney.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Chimney : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 23; j < 26; j++) {
+                    if (i == 4)
+                        array[i, j] = '_';
+                    if (i > 4 && (j == 23 || j == 25))
+                        array[i, j] = '|';
+                }
+            }
+        }
+    }
+}
+
+Roof.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Roof : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 0, j = 13; i < 14; i++, j--)
+                    array[i, j] = '/';
+            for (int i = 0, j = 14; i < 11; i++, j++)
+                    array[i, j] = '\\';
+            for (int i = 5, j = 30; i < 14; i++, j++)
+                    array[i, j] = '\\';
+            for(int i = 5, j = 29; i < 10; i++, j--)
+                    array[i, j] = '/';
+            for (int i = 13, j = 1; j < 38; j += 2)
+                array[i, j] = '_';
+        }
+    }
+}
+
+Door.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Door : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 21; i < 27; i++) {
+                for (int j = 15; j < 23; j++) {
+                    if (i == 21)
+                        array[i, j] = '=';
+                    if(i != 21 && (j == 15 || j == 18|| j == 19 || j == 22))
+                        array[i, j] = '|';
+                    if (i == 24 && (j == 17 || j == 20))
+                        array[i, j] = '+';
+                }
+            }
+        }
+    }
+}
+
+Windows.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Windows : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 15; i < 22; i++) {
+                for (int j = 9, k = 24; j < 14; j++, k++) {
+                    if ((i != 15 && i != 21) && (j == 9 || j == 11 || j == 13)) {
+                        array[i, j] = '|';
+                        array[i, k] = '|';
+                    }
+                    if (i == 15 || i == 21) {
+                        array[i, j] = '=';
+                        array[i, k] = '=';
+                    }
+                    if (i == 18 && (j == 10 || j == 12)) {
+                        array[i, j] = '-';
+                        array[i, k] = '-';
+                    }
+                }
+            }
+            for (int i = 6; i < 11; i++) {
+                for (int j = 11; j < 16; j++) {
+                    if (i == 6)
+                        array[i, j] = '=';
+                    if (i == 10)
+                        array[i, j] = '=';
+                    if(i != 6 && i != 10 && (j == 11 || j == 13 || j == 15))
+                        array[i, j] = '|';
+                    if (i == 8 && (j == 12 || j == 14))
+                        array[i, j] = '-';
+                }
+            }
+            for (int i = 8; i < 13; i++) {
+                for (int j = 28; j < 33; j++) {
+                    if (i == 8)
+                        array[i, j] = '=';
+                    if (i == 12)
+                        array[i, j] = '=';
+                    if (i != 8 && i != 12 && (j == 28 || j == 30 || j == 32))
+                        array[i, j] = '|';
+                    if (i == 10 && (j == 29 || j == 31))
+                        array[i, j] = '-';
+                }
+            }
+        }
+    }
+}
+
+Walls.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Walls : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 14; i < 27; i++) {
+                for(int j = 6, k = 31; j < 7; j++) {
+                    array[i, j] = '|';
+                    array[i, k] = '|';
+                }
+            }
+        }
+    }
+}
+
+Basement.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class Basement : IPart {
+        public void Drawing(char[,] array) {
+            for (int i = 26; i < 27; i++)
+                for (int j = 6; j < 32; j++)
+                    array[i, j] = '_';
+        }
+    }
+}
+
+House.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask8 {
+    public class House {
+        public static char[,] house;
+
+        public House() { house = new char[27, 39]; }
+        
+        public void HouseOutPut() {
+            for (int i = 0; i < 27; i++) {
+                for (int j = 0; j < 39; j++)
+                    Console.Write(house[i, j]);
+                Console.WriteLine();
+            }
+        }
+    }
+}

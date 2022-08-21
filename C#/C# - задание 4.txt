@@ -1,0 +1,124 @@
+Описать структуру Article, содержащую следующие свойства: код товара; название товара; цену товара.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public struct Article {
+        private ArticleType products;
+        private string code;
+        private string name;
+        private double price;
+
+        public ArticleType Products { get { return products; } set { products = value; } }
+        public string Code { get { return code; } set { code = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public double Price { get { return price; } set { price = value; } }
+    }
+}
+
+Описать структуру Client содержащую свойства: код клиента; ФИО; адрес; телефон; количество заказов осуществленных клиентом; общая сумма заказов клиента.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+   public struct Client {
+       private ClientType type;
+       private string code;
+       private string initials;
+       private string address;
+       private string phoneNumber;
+
+       public ClientType Type { get; set; }
+       public string Code { get; set; }
+       public string FIO { get; set; }
+       public string Address { get; set; }
+       public string PhoneNumber { get; set; }
+   }
+}
+
+Описать структуру RequestItem содержащую свойства: товар; количество единиц товара.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public struct RequestItem {
+        private string product;
+        private int amount;
+
+        public string Product { get; set; }
+        public int Amount { get; set; }
+    }
+}
+
+Описать структуру Request содержащую свойства: код заказа; клиент; дата заказа; перечень заказанных товаров; сумма заказа (реализовать вычисляемым свойством)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public struct Request {
+        private PayType payment;
+        private string orderCode;
+        private string client;
+        private string date;
+        private int amount;
+        private double sum;
+
+        public PayType Payment { get; set; }
+        public string OrderCode { get; set; }
+        public string Client { get; set; }
+        public string Date { get; set; }
+        public int Amount { get; set; }
+        public double Sum { get { return sum; } set { sum = value * amount; } }
+    }
+}
+
+Описать перечисление ArticleType определяющее типы товаров, и  добавить соответствующее поле в структуру Article из задания №1.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public enum ArticleType {
+        Meat, Fish, Fruit, Dairy, Break, Groceries, Beverages, Cosmetics
+    }
+}
+
+Описать перечисление ClientType определяющее важность клиента, и добавить соответствующее поле в структуру Client из задания №2.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public enum ClientType {
+        Bronze, Silver, Gold, Vip
+    }
+}
+
+Описать перечисление PayType определяющее форму оплаты клиентом заказа, и добавить соответствующее поле в структуру Request из задания №4 .
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask4 {
+    public enum PayType {
+       GBP, EUR, USD, RUB, BYN
+    }
+}

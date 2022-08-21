@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\28.TaskTwentyEight\28.TaskTwentyEight\main.cpp(26): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Projects\C++\ItStep\PracticeWork\28.TaskTwentyEight\28.TaskTwentyEight\main.cpp(104): warning C4018: <: несоответствие типов со знаком и без знака
+  28.TaskTwentyEight.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\28.TaskTwentyEight\Debug\28.TaskTwentyEight.exe

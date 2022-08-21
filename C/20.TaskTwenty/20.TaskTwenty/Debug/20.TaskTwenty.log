@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\20.TaskTwenty\20.TaskTwenty\main.cpp(20): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  20.TaskTwenty.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\20.TaskTwenty\Debug\20.TaskTwenty.exe

@@ -1,0 +1,200 @@
+Задание 1.
+Написать программу, которая считывает символы с кла-
+виатуры, пока не будет введена точка. Программа должна
+сосчитать количество введенных пользователем пробелов.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace cSharpHomeTask_1 {
+    class Program {
+        static void Main(string[] args) {
+            int count = 0;
+            Console.Title = "задача 1";
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("введите текст: ");
+            string text = Console.ReadLine();
+            char[] newtext = new char[text.Length];
+            for (int i = 0; i < text.Length; i++) {
+                if ((char)text[i] != '.')
+                    newtext[i] = (char)text[i];
+                else {
+                    newtext[i] = '\0';
+                    break;
+                }
+            }
+            for (int i = 0; i < text.Length; i++)
+                if ((char)text[i] == ' ')
+                    count++;
+            Console.Write("введенный текст до символа \".\": ");
+            for (int i = 0; i < newtext.Length; i++)
+                Console.Write(newtext[i]);
+            Console.WriteLine("\nколичество пробелов в тексте: " + count);
+        }
+    }
+}
+Задание 2.
+Ввести с клавиатуры номер трамвайного билета (6-значное
+число) и про-верить является ли данный билет счастливым
+(если на билете напечатано шестизначное число, и сумма
+первых трёх цифр равна сумме последних трёх, то этот
+билет считается счастливым).
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace cSharpHomeTask_1 {
+    class Program {
+        static void Main(string[] args) {
+            Console.Title = "задача 2";
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            string number;
+            Console.Write("введите номер трамвайного билета(шестизначное число): ");
+            number = Console.ReadLine();
+            int number0 = Convert.ToInt32(number);
+            Console.WriteLine("номер вашего билета: " + number0);
+            int sumLeft = 0, sumWright = 0;
+            for (int i = 0, j = 100000, k = 1; i < 3; i++, j /= 10, k *= 10) {
+                sumLeft += number0 / j % 10;
+                sumWright += number0 / k % 10;
+            }
+            if (sumLeft == sumWright)
+                Console.WriteLine("номер вашего билета счастливый.");
+
+        }
+    }
+}
+Задание 3.
+Числовые значения символов нижнего регистра в коде ASCII
+отличаются от значений символов верхнего регистра на
+величину 32. Используя эту информацию, написать про-
+грамму, которая считывает с клавиатуры и конвертирует
+все символы нижнего регистра в символы верхнего ре-
+гистра и наоборот.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace cSharpHomeTask_1 {
+    class Program {
+        static void Main(string[] args) {
+            Console.Title = "задача 3";
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            string text;
+            Console.Write("введите текст: ");
+            text = Console.ReadLine();
+            char [] newtext = new char[text.Length];
+            Console.WriteLine("введенный текст с переводом нижнего регистра в верхний и из верхнего в нижний:");
+            for (int i = 0; i < newtext.Length; i++) {
+                newtext[i] = (char)text[i];
+                if (newtext[i] >= 'A' && newtext[i] <= 'Z')
+                    Console.Write((char)(newtext[i] + 32));
+                else if (newtext[i] >= 'a' && newtext[i] <= 'z')
+                    Console.Write((char)(newtext[i] - 32));
+                else if (newtext[i] >= 'А' && newtext[i] <= 'Я')
+                    Console.Write((char)(newtext[i] + 32));
+                else if (newtext[i] >= 'а' && newtext[i] <= 'я')
+                    Console.Write((char)(newtext[i] - 32));
+                else
+                    Console.Write(newtext[i]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
+Задание 4.
+Даны целые положительные числа A и B (A < B). Вывести
+все целые числа от A до B включительно; каждое число
+должно выводиться на новой строке; при этом каждое
+число должно выводиться количество раз, равное его
+значению.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace cSharpHomeTask_1 {
+    class Program {
+        static void Main(string[] args) {
+            Console.Title = "задача 4";
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            int a, b;
+            
+            do {
+                Console.Write("введите значение переменной \"A\": ");
+                a = int.Parse(Console.ReadLine());
+                Console.Write("введите значение переменной \"B\": ");
+                b = int.Parse(Console.ReadLine());
+                if (a > b)
+                    Console.WriteLine("переменная \"A\" больше переменной \"B\"(введите другие значения).");
+                else {
+                    while (a <= b) {
+                        for (int i = 0; i < a; i++)
+                            Console.Write(a + " ");
+                        a++;
+                        Console.WriteLine();
+                    }
+                    break;
+                }
+            } while (a > b);
+        }
+    }
+}
+Задание 5.
+Дано целое число N (> 0), найти число, полученное при
+прочтении числа N справа налево. Например, если было
+введено число 345, то программа должна вывести число 543.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace cSharpHomeTask_1 {
+    class Program {
+        static void Main(string[] args) {
+            Console.Title = "задача 5";
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            int number;
+            int newnumb = 0;
+            do {
+                Console.Write("введите число: ");
+                number = int.Parse(Console.ReadLine());
+                if (number <= 0)
+                    Console.WriteLine("\"Ошибка\" введите число больше 0.");
+                else {
+                    while (number != 0) {
+                        newnumb += number % 10;
+                        number /= 10;
+                        newnumb *= 10;
+                    }
+                    newnumb /= 10;
+                    Console.WriteLine("введенное число справа налево: " + newnumb);
+                    break;
+                }
+            } while(number <= 0);
+        }
+    }
+}

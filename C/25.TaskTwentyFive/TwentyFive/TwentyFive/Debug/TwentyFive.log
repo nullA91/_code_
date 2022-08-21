@@ -1,0 +1,20 @@
+﻿  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(18): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(45): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(55): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(68): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(84): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(98): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(100): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(118): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(120): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(139): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(144): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(149): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(174): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(182): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(195): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(203): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(215): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\TwentyFive\main.cpp(222): warning C4018: <: несоответствие типов со знаком и без знака
+  TwentyFive.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\25.TaskTwentyFive\TwentyFive\Debug\TwentyFive.exe

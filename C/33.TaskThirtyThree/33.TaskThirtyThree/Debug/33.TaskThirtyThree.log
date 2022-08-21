@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\33.TaskThirtyThree\33.TaskThirtyThree\main.cpp(116): warning C4172: возвращение адреса локальной или временной переменной : surname
+  33.TaskThirtyThree.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\33.TaskThirtyThree\Debug\33.TaskThirtyThree.exe

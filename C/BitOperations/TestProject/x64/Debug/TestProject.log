@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\null\source\repos\TestProject\TestProject\main.cpp(57): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+  C:\Users\null\source\repos\TestProject\TestProject\main.cpp(57): note: рекомендуется использовать "%zd" в строке форматирования
+  TestProject.vcxproj -> C:\Users\null\source\repos\TestProject\x64\Debug\TestProject.exe

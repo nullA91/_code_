@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Projects\C++\ItStep\PracticeWork\26.TaskTwentySix\TwentySix\TwentySix\main.cpp(196): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\26.TaskTwentySix\TwentySix\TwentySix\main.cpp(240): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Projects\C++\ItStep\PracticeWork\26.TaskTwentySix\TwentySix\TwentySix\main.cpp(255): warning C4018: <: несоответствие типов со знаком и без знака
+  TwentySix.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\26.TaskTwentySix\TwentySix\Debug\TwentySix.exe

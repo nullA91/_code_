@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\student\Downloads\null\C++\PracticeWork\27.TaskTwentySeven\27.TaskTwentySeven\main.cpp(42,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  27.TaskTwentySeven.vcxproj -> C:\Users\student\Downloads\null\C++\PracticeWork\27.TaskTwentySeven\Debug\27.TaskTwentySeven.exe

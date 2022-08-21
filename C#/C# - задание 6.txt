@@ -1,0 +1,171 @@
+Реализовать класс для хранения комплексного числа . Выполнить в нем перегрузку всех необходимых операторов для успешной компиляции следующего фрагмента кода:
+Complex z = new Complex(1,1);
+Complex z1;   z1 = z - (z * z * z - 1) / (3 * z * z);
+Console.WriteLine("z1 =  {0}", z1);
+
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask6 {
+    class Program {
+        static void Main(string[] args) {
+            int x, y, choise;
+            Complex number, number1, number2;
+            do {
+                Console.WriteLine("\n\t\"меню\"");
+                Console.WriteLine("1. сложение комплексных чисел(оператор \'+\').");
+                Console.WriteLine("2. вычитание комплексных чисел(оператор \'-\').");
+                Console.WriteLine("3. умножение комплексных чисел(оператор \'*\').");
+                Console.WriteLine("4. деление комплексных чисел(оператор \'\\').");
+                Console.WriteLine("0. выход.");
+                Console.Write("\nвыберите пункт меню: ");
+                choise = int.Parse(Console.ReadLine());
+                switch (choise) { 
+                    case 1:
+                        Console.Clear();
+                        Console.Write("введите координату по оси X 1 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 1 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number1 = new Complex(x, y);
+                        Console.Write("введите координату по оси X 2 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 2 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number2 = new Complex(x, y);
+                        number = number1 + number2;
+                        Console.WriteLine("\nрезультат: " + "X = " + number.GetSetX + " Y = " + number.GetSetY);
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.Write("введите координату по оси X 1 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 1 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number1 = new Complex(x, y);
+                        Console.Write("введите координату по оси X 2 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 2 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number2 = new Complex(x, y);
+                        number = number1 - number2;
+                        Console.WriteLine("\nрезультат: " + "X = " + number.GetSetX + " Y = " + number.GetSetY);
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.Write("введите координату по оси X 1 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 1 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number1 = new Complex(x, y);
+                        Console.Write("введите координату по оси X 2 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 2 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number2 = new Complex(x, y);
+                        number = number1 * number2;
+                        Console.WriteLine("\nрезультат: " + "X = " + number.GetSetX + " Y = " + number.GetSetY);
+                        break;
+                    case 4:
+                        Console.Clear();
+                        Console.Write("введите координату по оси X 1 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 1 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number1 = new Complex(x, y);
+                        Console.Write("введите координату по оси X 2 -го комплексного числа: ");
+                        x = int.Parse(Console.ReadLine());
+                        Console.Write("введите координату по оси Y 2 -го комплексного числа: ");
+                        y = int.Parse(Console.ReadLine());
+                        number2 = new Complex(x, y);
+                        if (number2.GetSetX != 0 && number2.GetSetY != 0) {
+                            number = number1 / number2;
+                            Console.WriteLine("\nрезультат: " + "X = " + number.GetSetX + " Y = " + number.GetSetY);
+                        }
+                        else
+                            Console.WriteLine("координате делителя: x = {0} y = {1}", number2.GetSetX, number2.GetSetY + ", задайте другие значения для делителя.");
+                        break;
+                    case 0:
+                        choise = 0;
+                        break;
+                    default:
+                        Console.WriteLine("в меню нет пункта под выбраным номером, введите другое значение.");
+                        break;
+                }
+            } while (choise != 0);
+            Console.WriteLine("операция завершена, до свидания.");
+            Console.WriteLine("\t\"фрагмент кода\"");
+            Complex z = new Complex(1, 1);
+            Complex z1;
+            z1 = z - (z * z * z - 1) / (3 * z * z);
+            Console.WriteLine("\nрезультат: " + "X = " + z1.GetSetX + " Y = " + z1.GetSetY);
+        }
+    }
+}
+
+Complex.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace cSharpHomeTask6 {
+    public class Complex {
+        private int x;
+        private int y;
+
+        public Complex() { x = 0; y = 0; }
+        public Complex(int x, int y) { this.x = x; this.y = y; }
+
+        public int GetSetX { get { return x; } set { x = value; } }
+        public int GetSetY { get { return y; } set { y = value; } }
+
+        public static Complex operator +(Complex number1, Complex number2) {
+            Complex number = new Complex();
+            number.x = number1.x + number2.x;
+            number.y = number1.y + number2.y;
+            return number;
+        }
+        public static Complex operator -(Complex number1, Complex number2) {
+            Complex number = new Complex();
+            number.x = number1.x - number2.x;
+            number.y = number1.y - number2.y;
+            return number;
+        }
+        public static Complex operator -(Complex complex, int integer) {
+            Complex number = new Complex();
+            number.x = complex.x - integer;
+            number.y = complex.y;
+            return number;
+
+        }
+        public static Complex operator *(Complex number1, Complex number2) {
+            Complex number = new Complex();
+            number.x = (number1.x * number2.x - number1.y * number2.y);
+            number.y = (number1.x * number2.y + number1.y * number2.x);
+            return number;
+        }
+        public static Complex operator *(int integer, Complex complex) {
+            Complex number = new Complex();
+            number.x = integer * complex.x;
+            number.y = integer * complex.y;
+            return number;
+        }
+        public static Complex operator /(Complex number1, Complex number2) {
+            Complex number = new Complex();
+            if (number2.x != 0 && number2.y != 0) {
+                int denominator = number2.x * number2.x + number2.y * number2.y;
+                number.x = (number1.x * number2.x + number1.y * number2.y) / denominator;
+                number.y = (number2.x * number1.y - number2.y * number1.x) / denominator;
+                return number;
+            }
+            else
+                return number;
+        }
+    }
+}
