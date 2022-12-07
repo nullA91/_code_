@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\projects\c++\itstep\practicework\05.taskfive\headers\doublylinkedlist.h(483): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\projects\c++\itstep\practicework\05.taskfive\headers\doublylinkedlist.h(472): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\projects\c++\itstep\practicework\05.taskfive\labworkfive\labworkfive\main.cpp(25): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void doublyLinkedList<int>::show(void)"
+  c:\projects\c++\itstep\practicework\05.taskfive\labworkfive\labworkfive\main.cpp(7): note: см. ссылку на создание экземпляров класса шаблон при компиляции "doublyLinkedList<int>"
+c:\projects\c++\itstep\practicework\05.taskfive\headers\doublylinkedlist.h(489): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\projects\c++\itstep\practicework\05.taskfive\headers\doublylinkedlist.h(303): warning C4715: doublyLinkedList<int>::delAll: значение возвращается не при всех путях выполнения
+  LabWorkFive.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\05.TaskFive\LabWorkFive\Debug\LabWorkFive.exe
+  LabWorkFive.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\05.TaskFive\LabWorkFive\Debug\LabWorkFive.pdb (Partial PDB)

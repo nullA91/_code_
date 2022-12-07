@@ -1,0 +1,10 @@
+﻿  triangle.cpp
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(40): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(42): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(44): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(67): warning C4018: <: несоответствие типов со знаком и без знака
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(78): warning C4018: <: несоответствие типов со знаком и без знака
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(89): warning C4018: <: несоответствие типов со знаком и без знака
+c:\projects\c++\itstep\practicework\01.taskone\executable\triangle.cpp(103): warning C4018: <: несоответствие типов со знаком и без знака
+  LabWorkOne.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\01.TaskOne\Project\LabWorkOne\Debug\LabWorkOne.exe
+  LabWorkOne.vcxproj -> C:\Projects\C++\ItStep\PracticeWork\01.TaskOne\Project\LabWorkOne\Debug\LabWorkOne.pdb (Partial PDB)

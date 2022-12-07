@@ -1,0 +1,49 @@
+﻿  main.cpp
+  Functions.cpp
+c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(329): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(313): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(714): note: см. ссылку на создание экземпляров функции шаблон при компиляции "bool queuePriority<double,10>::fileWrite(const std::string &)"
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(634): note: см. ссылку на создание экземпляров класса шаблон при компиляции "queuePriority<double,10>"
+c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(332): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(216): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(205): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(711): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void queuePriority<double,10>::show(void)"
+c:\users\null\downloads\labworkfour\headers\queuewithpriority.h(222): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\queue.h(197): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\queue.h(184): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(609): note: см. ссылку на создание экземпляров функции шаблон при компиляции "bool queue<char,10>::fileWrite(const std::string &)"
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(531): note: см. ссылку на создание экземпляров класса шаблон при компиляции "queue<char,10>"
+c:\users\null\downloads\labworkfour\headers\queue.h(200): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\queue.h(118): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\queue.h(111): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(606): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void queue<char,10>::show(void)"
+c:\users\null\downloads\labworkfour\headers\queue.h(123): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\stack.h(75): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\null\downloads\labworkfour\headers\stack.h(72): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(465): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void stack<int,10>::push(data_type)"
+          with
+          [
+              data_type=int
+          ]
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(405): note: см. ссылку на создание экземпляров класса шаблон при компиляции "stack<int,10>"
+c:\users\null\downloads\labworkfour\headers\stack.h(80): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\null\downloads\labworkfour\headers\stack.h(84): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\null\downloads\labworkfour\headers\array.h(325): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\array.h(312): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(380): note: см. ссылку на создание экземпляров функции шаблон при компиляции "bool array<double,0>::fileWrite(const std::string &)"
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(146): note: см. ссылку на создание экземпляров класса шаблон при компиляции "array<double,0>"
+c:\users\null\downloads\labworkfour\headers\array.h(328): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\array.h(253): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+  c:\users\null\downloads\labworkfour\headers\array.h(246): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(353): note: см. ссылку на создание экземпляров функции шаблон при компиляции "void array<double,0>::show(void)"
+c:\users\null\downloads\labworkfour\headers\array.h(258): warning C4800: unsigned int: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+c:\users\null\downloads\labworkfour\headers\array.h(148): warning C4018: <: несоответствие типов со знаком и без знака
+  c:\users\null\downloads\labworkfour\headers\array.h(134): note: при компиляции функции-члена "<Нет данных>" класса <Нет данных>
+  c:\users\null\downloads\labworkfour\executable\functions.cpp(351): note: см. ссылку на создание экземпляров функции шаблон при компиляции "array<double,0> array<double,0>::append(const array<double,0> &)"
+c:\users\null\downloads\labworkfour\headers\array.h(153): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\null\downloads\labworkfour\headers\array.h(162): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\null\downloads\labworkfour\headers\array.h(167): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+c:\users\null\downloads\labworkfour\headers\queue.h(252): warning C4715: queue<char,10>::fileWrite: значение возвращается не при всех путях выполнения
+  LabWorkFour.vcxproj -> C:\Users\null\Downloads\LabWorkFour\LabWorkFour\Debug\LabWorkFour.exe
+  LabWorkFour.vcxproj -> C:\Users\null\Downloads\LabWorkFour\LabWorkFour\Debug\LabWorkFour.pdb (Partial PDB)
