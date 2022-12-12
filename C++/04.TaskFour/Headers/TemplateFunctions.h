@@ -2,7 +2,7 @@
 
 #include "../Headers/libraries.h"
 
-// среднее арифметическое значений массива
+// СЃСЂРµРґРЅРµРµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ Р·РЅР°С‡РµРЅРёР№ РјР°СЃСЃРёРІР°
 template<typename data_type>
 data_type _arithmetic_mean(const data_type* value_array, const unsigned int& value_count)
 {
@@ -14,7 +14,7 @@ data_type _arithmetic_mean(const data_type* value_array, const unsigned int& val
 
 	return sum;
 }
-// нахождение корней линейного уравнения
+// РЅР°С…РѕР¶РґРµРЅРёРµ РєРѕСЂРЅРµР№ Р»РёРЅРµР№РЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ
 template<typename data_type>
 data_type _linear_equation_root(const data_type& coefficientA, const data_type& coefficientB)
 {
@@ -28,7 +28,7 @@ data_type _linear_equation_root(const data_type& coefficientA, const data_type& 
 
 	return x;
 }
-// нахождение корней квадратного уравнения
+// РЅР°С…РѕР¶РґРµРЅРёРµ РєРѕСЂРЅРµР№ РєРІР°РґСЂР°С‚РЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ
 template<typename data_type>
 std::pair<data_type, data_type> _quadratic_equation_root(const data_type& coefficientA, const data_type& coefficientB, const data_type& coefficientC)
 {
@@ -47,7 +47,7 @@ std::pair<data_type, data_type> _quadratic_equation_root(const data_type& coeffi
 
 	return std::pair<data_type, data_type>(x_first, x_second);
 }
-// максимальное значение из двух значений
+// РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· РґРІСѓС… Р·РЅР°С‡РµРЅРёР№
 template<typename data_type>
 data_type _max_value(const data_type& value_first, const data_type& value_second)
 {
@@ -57,7 +57,7 @@ data_type _max_value(const data_type& value_first, const data_type& value_second
 
 	return max_value;
 }
-// минимальное значение из двух значений
+// РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· РґРІСѓС… Р·РЅР°С‡РµРЅРёР№
 template<typename data_type>
 data_type _min_value(const data_type& value_first, const data_type& value_second)
 {
@@ -72,7 +72,7 @@ data_type _min_value(const data_type& value_first, const data_type& value_second
 // #################### //
 // #################### //
 
-// тип данных значения
+// С‚РёРї РґР°РЅРЅС‹С… Р·РЅР°С‡РµРЅРёСЏ
 template <typename data_type>
 unsigned int valueDataType(data_type value)
 {
@@ -115,7 +115,7 @@ unsigned int valueDataType(data_type value)
 
 	return return_value;
 }
-// длинна(количество цифр[символов]) значения
+// РґР»РёРЅРЅР°(РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ[СЃРёРјРІРѕР»РѕРІ]) Р·РЅР°С‡РµРЅРёСЏ
 template <typename data_type>
 unsigned int valueLength(data_type value)
 {
@@ -131,10 +131,10 @@ unsigned int valueLength(data_type value)
 	type = valueDataType(value);
 	_value_ = std::to_string(value);
 
-	// целочисленный тип данных
+	// С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ С‚РёРї РґР°РЅРЅС‹С…
 	if (type == 1)
 		length = _value_.length();
-	// если тип данных вещественное число
+	// РµСЃР»Рё С‚РёРї РґР°РЅРЅС‹С… РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ
 	else if (type == 2)
 	{
 		for (size_t i = _value_.length() - 1; _value_[i] != '.'; --i)
@@ -149,10 +149,10 @@ unsigned int valueLength(data_type value)
 		valueChanged[_value_.length() - size] = '\0';
 		length = strlen(valueChanged);
 	}
-	// тип данных символ или булево значение
+	// С‚РёРї РґР°РЅРЅС‹С… СЃРёРјРІРѕР» РёР»Рё Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ
 	else if (type == 3)
 		length = 1;
-	// пользовательский тип дынных
+	// РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ С‚РёРї РґС‹РЅРЅС‹С…
 	else
 		length = 0;
 
